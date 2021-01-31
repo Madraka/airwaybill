@@ -15,7 +15,10 @@ class UsersTableSeeder extends Seeder
             'name' => 'Ricky Maharjan',
             'email' => 'info@cosmioinfotech.com',
             'password' => Hash::make('password'),
+            'role' => 1
         ]);
-
+        App\Models\UserRole::create([
+            'role' =>'admin'
+        ]);
     }
 }

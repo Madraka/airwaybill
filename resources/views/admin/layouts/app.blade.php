@@ -27,6 +27,7 @@
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
      <div class="wrapper">
+          <div id="app">
           <!-- Navbar -->
           @include('admin.layouts.header')
           <!-- /.navbar -->
@@ -48,6 +49,7 @@
 
           <!-- Main Footer -->
           @include('admin.layouts.footer')
+          </div>
      </div>
      <!-- ./wrapper -->
 
@@ -56,6 +58,8 @@
      <script src="{{ asset('assets/admin') }}/plugins/jquery/jquery.min.js"></script>
      <!-- Bootstrap -->
      <script src="{{ asset('assets/admin') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+     <script src="/js/app.js"></script>
      <!-- overlayScrollbars -->
      <script src="{{ asset('assets/admin') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
      <!-- AdminLTE App -->
