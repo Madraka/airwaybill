@@ -57,14 +57,14 @@
                         <div class="form-group clearfix">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="class=" icheck-primary d-inline"">
+                                    <div class="icheck-primary d-inline">
                                         <input id="document" type="checkbox" name="" id="">
                                         <label for="document">Express Document</label>
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="class=" icheck-primary d-inline"">
+                                    <div class="icheck-primary d-inline">
                                         <input id="parcel" type="checkbox" name="" id="">
                                         <label for="parcel">Express Parcel</label>
                                     </div>
