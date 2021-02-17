@@ -21,9 +21,9 @@
                          </a>
                     </li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="{{ route('shipments') }}" class="nav-link">
                          <i class="fas fa-shipping-fast"></i>
-                              <p>Sliders</p>
+                              <p>Shipments</p>
                          </a>
                     </li>
                     <li class="nav-item has-treeview">
@@ -51,18 +51,18 @@
 
                          </ul>
                     </li>   
-                    @if(Auth::user()->admin)
+                   @if(Auth::user()->role_id == 1)
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="{{ route('users') }}" class="nav-link">
                          <i class="fas fa-users"></i>
                               <p>Users</p>
                               <span class="badge badge-info right">2</span>
                          </a>
                     </li>
-                    @endif
+                   @endif
                     <li class="nav-header">Settings</li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="{{ route('settings') }}" class="nav-link">
                          <i class="fas fa-cogs"></i>
                               <p>Settings</p>
                          </a>

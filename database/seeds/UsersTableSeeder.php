@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,10 +16,14 @@ class UsersTableSeeder extends Seeder
             'name' => 'Ricky Maharjan',
             'email' => 'info@cosmioinfotech.com',
             'password' => Hash::make('password'),
-            'role' => 1
+            'role_id' => 1
         ]);
-        App\Models\UserRole::create([
-            'role' =>'admin'
-        ]);
+        App\Models\Profile::create([
+            'user_id'=>$user->id,
+             'avatar'=>'link of image',
+             'about'=>'This is about the user',
+             'facebook'=>'facebook.com',
+             'youtube'=>'youtube.com'
+         ]);
     }
 }
