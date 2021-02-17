@@ -26,31 +26,20 @@
                               <p>Shipments</p>
                          </a>
                     </li>
-                    <li class="nav-item has-treeview">
-                         <a href="#" class="nav-link">
+                    <li class="nav-item">
+                         <a href="{{ route('manifests') }}" class="nav-link">
                          <i class="fas fa-shipping-fast"></i>
-                              <p>
-                                   Shipping
-                                   <i class="fas fa-angle-left right"></i>
-                                   <span class="badge badge-info right">2</span>
-                              </p>
+                              <p>Manifests</p>
                          </a>
-                         <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                   <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Country</p>
-                                   </a>
-                              </li>
-                              <li class="nav-item">
-                                   <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Country Info</p>
-                                   </a>
-                              </li>
+                    </li>
+                    <li class="nav-item">
+                         <a href="{{ route('services') }}" class="nav-link">
+                         <i class="fas fa-shipping-fast"></i>
+                              <p>Services</p>
+                         </a>
+                    </li>
 
-                         </ul>
-                    </li>   
+ 
                    @if(Auth::user()->role_id == 1)
                     <li class="nav-item">
                          <a href="{{ route('users') }}" class="nav-link">

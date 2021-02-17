@@ -34,6 +34,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/manifest/edit/{id}', 'Admin\ManifestsController@edit')->name('manifest.edit');
     Route::post('/manifest/update/{id}', 'Admin\ManifestsController@update')->name('manifest.update');
     Route::get('/manifest/delete/{id}', 'Admin\ManifestsController@destroy')->name('.manifest.destroy');
+    // Services
+    Route::get('/services', 'Admin\ServicesController@index')->name('services');
+    Route::get('/service/create', 'Admin\ServicesController@create')->name('service.create');
+    Route::post('/service/store', 'Admin\ServicesController@store')->name('service.store');
+    Route::get('/service/edit/{id}', 'Admin\ServicesController@edit')->name('service.edit');
+    Route::post('/service/update/{id}', 'Admin\ServicesController@update')->name('service.update');
+    Route::get('/service/delete/{id}', 'Admin\ServicesController@destroy')->name('service.destroy');
     //Settings
     Route::get('/settings', 'Admin\SettingController@index')->name('settings');
     Route::post('/setting/update/{id}', 'Admin\SettingController@update')->name('setting.update');
