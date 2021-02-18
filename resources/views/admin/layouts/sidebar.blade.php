@@ -38,6 +38,12 @@
                               <p>Services</p>
                          </a>
                     </li>
+                    <li class="nav-item">
+                         <a href="{{ route('countries') }}" class="nav-link">
+                         <i class="fas fa-shipping-fast"></i>
+                              <p>Countries</p>
+                         </a>
+                    </li>
 
  
                    @if(Auth::user()->role_id == 1)

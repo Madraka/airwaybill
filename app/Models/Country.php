@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Service extends Model
+class Country extends Model
 {
     use Sluggable;
-    protected $fillable = ['name','slug'];
 
+    protected $fillable = ['name','slug','code'];   
+
+    
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -24,9 +26,4 @@ class Service extends Model
         ];
     }
    
-    public function commenshipmentsts()
-    {
-        return $this->hasMany(\App\Models\Shipment::class);
-    }
-    
 }
