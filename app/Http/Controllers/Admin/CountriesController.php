@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
-class ServicesController extends Controller
+class CountriesController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $services = Service::orderBy('id', 'desc')->get();
-        return view('admin.service.index', compact('services'));
+        $countries = Country::orderBy('name', 'asc')->get();
+        return view('admin.country.index', compact('countries'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('admin.service.create');
+        return view('admin.country.create');
     }
 
     /**
@@ -39,13 +39,14 @@ class ServicesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'code' => 'required',
         ]);
 
-        $service = new Service();
-        $service->name = $request->name;
-      
-        $service->save();
-        return redirect()->route('services')->with('success', "Service Added Successfully");
+        $country = new Country();
+        $country->name = $request->name;
+        $country->code = $request->code;
+        $country->save();
+        return redirect()->route('countries')->with('success', "Country Added Successfully");
     }
 
     /**
@@ -67,8 +68,8 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::findOrFail($id);
-        return view('admin.service.edit', compact('service'));
+        $country = Country::findOrFail($id);
+        return view('admin.country.edit', compact('country'));
     }
 
     /**
@@ -82,16 +83,16 @@ class ServicesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-           
+            'code' => 'required',
         ]);
 
-        $service = Service::findOrFail($id);
-        $service->name = $request->name;
-   
+        $country = Country::findOrFail($id);
+        $country->name = $request->name;
+        $country->code = $request->code;
 
-        $service->save();
+        $country->save();
 
-        return redirect()->route('services')->with('success', "Service Updated Successfully");
+        return redirect()->route('countries')->with('success', "Country Updated Successfully");
     }
 
     /**
@@ -102,9 +103,9 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::findOrFail($id);
+        $country = Country::findOrFail($id);
 
-        $service->delete();
-        return redirect()->route('services')->with('error', 'Service Deleted Successfully');
+        $country->delete();
+        return redirect()->route('countries')->with('error', 'Country Deleted Successfully');
     }
 }

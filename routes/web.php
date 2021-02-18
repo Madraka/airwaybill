@@ -41,6 +41,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/service/edit/{id}', 'Admin\ServicesController@edit')->name('service.edit');
     Route::post('/service/update/{id}', 'Admin\ServicesController@update')->name('service.update');
     Route::get('/service/delete/{id}', 'Admin\ServicesController@destroy')->name('service.destroy');
+    // Countries
+    Route::get('/countries', 'Admin\CountriesController@index')->name('countries');
+    Route::get('/country/create', 'Admin\CountriesController@create')->name('country.create');
+    Route::post('/country/store', 'Admin\CountriesController@store')->name('country.store');
+    Route::get('/country/edit/{id}', 'Admin\CountriesController@edit')->name('country.edit');
+    Route::post('/country/update/{id}', 'Admin\CountriesController@update')->name('country.update');
+    Route::get('/country/delete/{id}', 'Admin\CountriesController@destroy')->name('country.destroy');
     //Settings
     Route::get('/settings', 'Admin\SettingController@index')->name('settings');
     Route::post('/setting/update/{id}', 'Admin\SettingController@update')->name('setting.update');
