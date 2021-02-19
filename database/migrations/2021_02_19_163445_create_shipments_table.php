@@ -37,8 +37,7 @@ class CreateShipmentsTable extends Migration
             $table->string('receiver_phone');
             $table->string('receiver_postcode')->comment('Post/Zipcode');
             $table->string('goods_description');
-            $table->string('currency');
-            $table->float('declared_value_for_custom',8,2);
+            $table->string('declared_value_for_custom');
             $table->smallInteger('pieces');
             $table->smallInteger('kilograms');
             $table->smallInteger('grams');

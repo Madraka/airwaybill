@@ -10,12 +10,6 @@ class Shipment extends Model
 
     public function service()
     {
-        return $this->belongsTo(\App\Models\Service::class);
+        return $this->belongsTo(\App\Models\Service::class,'service_id');
     }
-   
-    public function dimensions()
-    {
-        return $this->hasMany(\App\Models\Dimension::class, 'shipment_id');
-    }
-    
 }

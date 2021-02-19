@@ -24,9 +24,9 @@ class Service extends Model
         ];
     }
    
-    public function commenshipmentsts()
+    public function shipments()
     {
-        return $this->hasMany(\App\Models\Shipment::class);
+        return $this->hasMany(\App\Models\Shipment::class,'service_id');
     }
     
 }

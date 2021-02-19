@@ -63,6 +63,17 @@
                          </a>
                     </li>
                </ul>
+               <a href="#" class="dropdown-item">
+                    <i class="far fa-id-badge mr-2"></i> Profile
+               </a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt mr-2"></i>
+                    {{ __('Logout') }}
+               </a>
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+               </form>
           </nav>
           <!-- /.sidebar-menu -->
      </div>
