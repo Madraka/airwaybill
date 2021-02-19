@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Manifest;
+use App\Models\Shipment;
 use Illuminate\Http\Request;
 
 class ManifestsController extends Controller
@@ -26,7 +27,8 @@ class ManifestsController extends Controller
      */
     public function create()
     {
-        return view('admin.manifest.create');
+        $shipments = Shipment::where('manifest','=',0)->get();
+        return view('admin.manifest.create',compact('shipments'));
     }
 
     /**
@@ -37,7 +39,16 @@ class ManifestsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'flight_no' => 'required',
+        
+        ]);
+
+        $manifest = new Manifest();
+        $manifest->flight_no = $request->flight_no;
+        $manifest->shipments()->attach($request->shipments);
+        $manifest->save();
+        return redirect()->route('manifests')->with('success', "Manifest Added Successfully");
     }
 
     /**
@@ -59,7 +70,8 @@ class ManifestsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $shipments = Shipment::where('manifest','=',0)->get();
+        return view('admin.manifest.edit',compact('shipments'));
     }
 
     /**
@@ -71,7 +83,16 @@ class ManifestsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'flight_no' => 'required',
+        
+        ]);
+
+        $manifest = Manifest::findOrFail($id);
+        $manifest->flight_no = $request->flight_no;
+        $manifest->save();
+        $manifest->shipments()->sync($request->shipments);
+        return redirect()->route('manifests')->with('success', "Manifest Updated Successfully");
     }
 
     /**
@@ -82,6 +103,9 @@ class ManifestsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $manifest = Manifest::findOrFail($id);
+        $manifest->delete();
+       
+        return redirect()->route('manifests')->with('error', "Manifest Deleted Successfully");
     }
 }

@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','Manifest')
+@section('title','Manifests')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Mainfest</li>
+                    <li class="breadcrumb-item active">Mainfests</li>
                 </ol>
             </div>
         </div>
@@ -31,27 +31,29 @@
                         <table id="example1" class="table table-hover dataTable no-footer">
                             <thead>
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
+                                    <th>S.No.</th>
+                                    <th>MAWB No.</th>
+                                    <th>Flight No.</th>
+                                    <th>AWB No.</th>
+                                    <th>From(Shipper)</th>
+                                    <th>To(Receiver)</th>
+                                    <th>Contents</th>
+                                    <th>Destination</th>
+                                    <th>Declared Value</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
-                                    <td>Trident</td>
-                                    <td>Win 95+</td>
+                                    <td>S.No.</td>
+                                    <td>MAWB No.</td>
+                                    <td>Flight No.</td>
+                                    <td>AWB No.</td>
+                                    <td>From(Shipper)</td>
+                                    <td>To(Receiver)</td>
+                                    <td>Contents</td>
+                                    <td>Destination</td>
+                                    <td>Declared Value</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
