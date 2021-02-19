@@ -12,4 +12,8 @@ class Shipment extends Model
     {
         return $this->belongsTo(\App\Models\Service::class,'service_id');
     }
+    public function manifests()
+    {
+        return $this->belongsToMany(\App\Models\Manifest::class,'manifest_id');
+    }
 }

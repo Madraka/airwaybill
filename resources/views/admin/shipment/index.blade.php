@@ -46,11 +46,11 @@
               <tbody>
                 @foreach($shipments as $shipment)
                 <tr>
-                  <th>{{ $loop->iteration }}</th>
-                  <th>{{ $shipment->awb_no }}</th>
-                  <th>{{ $shipment->customer_reference }}</th>
-                  <th>{{ $shipment->service->name }}</th>
-                  <th>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ $shipment->awb_no }}</td>
+                  <td>{{ $shipment->customer_reference }}</td>
+                  <td>{{ $shipment->service->name }}</td>
+                  <td>
                     <ul>
                       <li>Name: {{ $shipment->shipper_name }}</li>
                       <li>Contact Person: {{ $shipment->shipper_contact_person }}</li>
@@ -60,8 +60,8 @@
                       <li>Phone: {{ $shipment->shipper_phone }}</li>
                      
                     </ul>
-                  </th>
-                  <th>
+                  </td>
+                  <td>
                     <ul>
                       <li>Name: {{ $shipment->receiver_name }}</li>
                       <li>Contact Person: {{ $shipment->receiver_contact_person }}</li>
@@ -71,9 +71,9 @@
                       <li>Phone: {{ $shipment->receiver_phone }}</li>
                      
                     </ul>
-                  </th>
-                  <th>{{ $shipment->goods_description }}</th>
-                  <th>{{ $shipment->declared_value_for_custom }}</th>
+                  </td>
+                  <td>{{ $shipment->goods_description }}</td>
+                  <td>{{ $shipment->declared_value_for_custom }}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-primary">Edit</button>
