@@ -49,15 +49,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/country/update/{id}', 'Admin\CountriesController@update')->name('country.update');
     Route::get('/country/delete/{id}', 'Admin\CountriesController@destroy')->name('country.destroy');
     //Settings
-    Route::get('/settings', 'Admin\SettingController@index')->name('settings');
-    Route::post('/setting/update/{id}', 'Admin\SettingController@update')->name('setting.update');
+    Route::get('/settings', 'Admin\SettingController@index')->name('settings')->middleware('admin');
+    Route::post('/setting/update/{id}', 'Admin\SettingController@update')->name('setting.update')->middleware('admin');
     //Users
-    Route::get('/users', 'Admin\UsersController@index')->name('users');
-    Route::get('/user/create', 'Admin\UsersController@create')->name('user.create');
-    Route::post('/user/store', 'Admin\UsersController@store')->name('user.store');
-    Route::get('/user/edit/{id}', 'Admin\UsersController@edit')->name('user.edit');
-    Route::post('/user/update/{id}', 'Admin\UsersController@update')->name('user.update');
-    Route::get('/user/delete/{id}', 'Admin\UsersController@destroy')->name('user.destroy');
+    Route::get('/users', 'Admin\UsersController@index')->name('users')->middleware('admin');
+    Route::get('/user/create', 'Admin\UsersController@create')->name('user.create')->middleware('admin');
+    Route::post('/user/store', 'Admin\UsersController@store')->name('user.store')->middleware('admin');
+    Route::get('/user/edit/{id}', 'Admin\UsersController@edit')->name('user.edit')->middleware('admin');
+    Route::post('/user/update/{id}', 'Admin\UsersController@update')->name('user.update')->middleware('admin');
+    Route::get('/user/delete/{id}', 'Admin\UsersController@destroy')->name('user.destroy')->middleware('admin');
    
     // Profile
     Route::get('/user/profile', 'Admin\ProfilesController@index')->name('user.profile');

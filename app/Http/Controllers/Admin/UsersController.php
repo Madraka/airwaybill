@@ -67,7 +67,7 @@ class UsersController extends Controller
             'avatar' => 'uploads/avatars/male.jpg'
         ]);
 
-        return redirect()->route('admin.users')->with('success', "User Added Successfully");
+        return redirect()->route('users')->with('success', "User Added Successfully");
     }
 
     /**
@@ -126,6 +126,6 @@ class UsersController extends Controller
         $user->profile->delete();
         $user->delete();
 
-        return redirect()->route('admin.users')->with('success', "User Deleted Successfully");
+        return redirect()->route('users')->with('success', "User Deleted Successfully");
     }
 }

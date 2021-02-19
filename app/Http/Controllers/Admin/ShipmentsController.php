@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\Shipment;
+use App\Models\Service;
 
 class ShipmentsController extends Controller
 {
@@ -26,7 +28,9 @@ class ShipmentsController extends Controller
      */
     public function create()
     {
-        return view('admin.shipment.create');
+        $services = Service::orderBy('id','desc')->get();
+        $countries = Country::orderBy('name','asc')->get();
+        return view('admin.shipment.create',compact('services','countries'));
     }
 
     /**
@@ -57,7 +61,6 @@ class ShipmentsController extends Controller
             'receiver_phone' => 'required',
             'receiver_postcode' => 'required',
             'goods_description' => 'required',
-            'currency' => 'required',
             'declared_value_for_custom' => 'required',
             'pieces' => 'required',
             'kilograms' => 'required',
@@ -73,6 +76,7 @@ class ShipmentsController extends Controller
         $shipment->shipper_contact_person = $request->shipper_contact_person;
         $shipment->shipper_address = $request->shipper_address;
         $shipment->shipper_city = $request->shipper_city;
+        $shipment->shipper_state = $request->shipper_state;
         $shipment->shipper_country = $request->shipper_country;
         $shipment->shipper_phone = $request->shipper_phone;
         $shipment->shipper_postcode = $request->shipper_postcode;
@@ -80,17 +84,17 @@ class ShipmentsController extends Controller
         $shipment->receiver_contact_person = $request->receiver_contact_person;
         $shipment->receiver_address = $request->receiver_address;
         $shipment->receiver_city = $request->receiver_city;
+        $shipment->receiver_state = $request->receiver_state;
         $shipment->receiver_country = $request->receiver_country;
         $shipment->receiver_phone = $request->receiver_phone;
         $shipment->receiver_postcode = $request->receiver_postcode;
-        $shipment->goods_description = $request->goods_description;
-        $shipment->currency = $request->currency;
+        $shipment->goods_description = $request->goods_description;    
         $shipment->declared_value_for_custom = $request->declared_value_for_custom;
         $shipment->pieces = $request->pieces;
         $shipment->kilograms = $request->kilograms;
         $shipment->grams = $request->grams;
 
-      
+        
         $shipment->save();
         return redirect()->route('shipments')->with('success', "Shipment Added Successfully");
     }
@@ -115,7 +119,9 @@ class ShipmentsController extends Controller
     public function edit($id)
     {
         $shipment = Shipment::finfOrFail($id);
-        return view('admin.shipment.edit',compact('shipment'));
+        $services = Service::orderBy('id','desc')->get();
+        $countries = Country::orderBy('name','asc')->get();
+        return view('admin.shipment.edit',compact('shipment','services','countries'));
     }
 
     /**
@@ -147,7 +153,6 @@ class ShipmentsController extends Controller
             'receiver_phone' => 'required',
             'receiver_postcode' => 'required',
             'goods_description' => 'required',
-            'currency' => 'required',
             'declared_value_for_custom' => 'required',
             'pieces' => 'required',
             'kilograms' => 'required',
@@ -163,6 +168,7 @@ class ShipmentsController extends Controller
         $shipment->shipper_contact_person = $request->shipper_contact_person;
         $shipment->shipper_address = $request->shipper_address;
         $shipment->shipper_city = $request->shipper_city;
+        $shipment->shipper_state = $request->shipper_state;
         $shipment->shipper_country = $request->shipper_country;
         $shipment->shipper_phone = $request->shipper_phone;
         $shipment->shipper_postcode = $request->shipper_postcode;
@@ -170,11 +176,11 @@ class ShipmentsController extends Controller
         $shipment->receiver_contact_person = $request->receiver_contact_person;
         $shipment->receiver_address = $request->receiver_address;
         $shipment->receiver_city = $request->receiver_city;
+        $shipment->receiver_state = $request->receiver_state;
         $shipment->receiver_country = $request->receiver_country;
         $shipment->receiver_phone = $request->receiver_phone;
         $shipment->receiver_postcode = $request->receiver_postcode;
-        $shipment->goods_description = $request->goods_description;
-        $shipment->currency = $request->currency;
+        $shipment->goods_description = $request->goods_description;    
         $shipment->declared_value_for_custom = $request->declared_value_for_custom;
         $shipment->pieces = $request->pieces;
         $shipment->kilograms = $request->kilograms;

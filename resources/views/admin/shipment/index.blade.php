@@ -32,27 +32,48 @@
             <table id="example1" class="table table-hover dataTable no-footer">
               <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
+                  <th>S.No</th>
+                  <th>AWB No.</th>
+                  <th>Customer Reference</th>
+                  <th>Service</th>
+                  <th>From(Shipper)</th>
+                  <th>To(Receiver)</th>
+                  <th>Description of Goods</th>
+                  <th>Value</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
+                @foreach($shipments as $shipment)
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>Trident</td>
-                  <td>Win 95+</td>
+                  <th>{{ $loop->iteration }}</th>
+                  <th>{{ $shipment->awb_no }}</th>
+                  <th>{{ $shipment->customer_reference }}</th>
+                  <th>{{ $shipment->service->name }}</th>
+                  <th>
+                    <ul>
+                      <li>Name: {{ $shipment->shipper_name }}</li>
+                      <li>Contact Person: {{ $shipment->shipper_contact_person }}</li>
+                      <li>Address: {{ $shipment->shipper_address }}, {{ $shipment->shipper_city }}, {{ $shipment->shipper_country }}</li>
+                      <li>State/Provience: {{ $shipment->shipper_state }}</li>
+                      <li>Post Code: {{ $shipment->shipper_postcode }}</li>
+                      <li>Phone: {{ $shipment->shipper_phone }}</li>
+                     
+                    </ul>
+                  </th>
+                  <th>
+                    <ul>
+                      <li>Name: {{ $shipment->receiver_name }}</li>
+                      <li>Contact Person: {{ $shipment->receiver_contact_person }}</li>
+                      <li>Address: {{ $shipment->receiver_address }}, {{ $shipment->receiver_city }}, {{ $shipment->receiver_country }}</li>
+                      <li>State/Provience: {{ $shipment->receiver_state }}</li>
+                      <li>Post Code: {{ $shipment->receiver_postcode }}</li>
+                      <li>Phone: {{ $shipment->receiver_phone }}</li>
+                     
+                    </ul>
+                  </th>
+                  <th>{{ $shipment->goods_description }}</th>
+                  <th>{{ $shipment->declared_value_for_custom }}</th>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-primary">Edit</button>
@@ -61,6 +82,7 @@
                     </div>
                   </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
