@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\Dimension;
 use Illuminate\Http\Request;
 use App\Models\Shipment;
 use App\Models\Service;
@@ -93,9 +94,20 @@ class ShipmentsController extends Controller
         $shipment->pieces = $request->pieces;
         $shipment->kilograms = $request->kilograms;
         $shipment->grams = $request->grams;
-
-        
+        $lengths = $request->length;
+        $breadths = $request->breadth;
+        $heights = $request->height;
         $shipment->save();
+        $shipmentId = $shipment->id;
+        for($i=0;$i<count($lengths);$i++){
+            Dimension::create([
+                'shipment_id' =>$shipmentId,
+                'length' =>$lengths[$i],
+                'breadth' => $breadths[$i],
+                'height' => $heights[$i]
+            ]);
+        }
+        
         return redirect()->route('shipments')->with('success', "Shipment Added Successfully");
     }
 

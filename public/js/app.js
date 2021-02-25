@@ -50850,8 +50850,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -50879,9 +50879,9 @@ Vue.component('shipping-component', __webpack_require__(/*! ./admin/form.vue */ 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
-window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["Form"];
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["HasError"]);
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"]);
+window.Form = vform__WEBPACK_IMPORTED_MODULE_0__["Form"];
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_0__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_0__["HasError"]);
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_0__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_0__["AlertError"]);
 var app = new Vue({
   el: '#app'
 });
@@ -50951,8 +50951,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\Cargo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\Cargo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\AirwayBill\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\AirwayBill\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

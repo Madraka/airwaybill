@@ -288,20 +288,20 @@
                         <table class="table dataTable table-bordered" id="myTable">
                             <tbody>
                                 <tr>
-                                    <td>No. Of Pieces</td>
+                                    <td>SN</td>
                                     <td>Length</td>
                                     <td>Breadth</td>
                                     <td>Height</td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td><input name="pieces" class="form-control" type="number" /></td>
-                                    <td><input name="length" class="form-control" type="number" /></td>
+                                    <td><input name="length[]" class="form-control" type="number" /></td>
                                     <td><input name="weight" class="form-control" type="number" /></td>
                                     <td><input name="height" class="form-control" type="number" /></td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
-                        <button id="add-row">Add row</button>
+                        <button id="add-row" type="button">Add row</button>
                     </div>
                 </div>
 

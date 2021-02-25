@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dimension extends Model
 {
-    protected $fillable = ['shipment_id','pieces','length','width','height'];
+    protected $fillable = ['shipment_id','pieces','length','breadth','width','height'];
 
     public function shipment()
     {

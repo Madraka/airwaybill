@@ -109,6 +109,24 @@
            toastr.error("{{ Session::get('error') }}",'Error')  
      @endif
      </script>
+     <script>
+          var i =1;
+          $(document).ready(function() {
+              //Try to get tbody first with jquery children. works faster!
+          var tbody = $('#myTable').children('tbody');
+          
+          //Then if no tbody just select your table 
+          var table = tbody.length ? tbody : $('#myTable');
+          table.append('<tr><td>'+i+'</td><td><input class="form-control" type="number" name="length[]"/></td><td><input class="form-control" type="number" name="breadth[]"/></td><td><input class="form-control" type="number" name="height[]"/></td></tr>');
+          
+          
+          $('#add-row').click(function(){
+          i = i+1;
+          //Add row
+          table.append('<tr><td>'+i+'</td><td><input class="form-control" type="number" name="length[]"/></td><td><input class="form-control" type="number" name="breadth[]"/></td><td><input class="form-control" type="number" name="height[]"/></td></tr>');
+          })
+          });
+        </script>
 </body>
 
 </html>

@@ -17,9 +17,9 @@ class CreateDimensionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('shipment_id');
             $table->foreign('shipment_id')->references('id')->on('shipments')->onDelete('cascade');
-            $table->smallInteger('pieces');
+            // $table->smallInteger('pieces');
             $table->smallInteger('length');
-            $table->smallInteger('weight');
+            $table->smallInteger('breadth');
             $table->smallInteger('height');
             $table->timestamps();
         });
