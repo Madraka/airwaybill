@@ -19,21 +19,22 @@
 </head>
 <body>
   <header id="header w-100" class="fixed-top">
-    <nav class="navbar navbar-expand-sm bg-light">
+    <nav class="navbar navbar-expand-md bg-light">
       <div class="container-fluid">
         <a class="navbar-brand p-0" href="#">
           <img src="/images/demo-logo.png" height="42px" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
           <span><i class="fas fa-bars navbutton"></i></span>
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto text-uppercase">
-            <li class="mx-2 px-2 nav-item active">
+            <li class="mx-2 px-2 nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="mx-2 px-2 nav-item">
+            <li class="mx-2 px-2 nav-item active">
               <a class="nav-link" href="/services">Services</a>
             </li>
             <li class="mx-2 px-2 nav-item">
@@ -44,7 +45,6 @@
                 Login
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  
                 @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -66,75 +66,51 @@
     </nav>
   </header>
 
-  <main>
+  <main class="main">
     <section>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" src="/images/bg1.jpg" alt="First slide" style="height: 754px">
-            <div class="carousel-caption">
-              <p class="display-3 text-uppercase slider-head">This is First Slide</p>
-              <p class="lead slider-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="/images/bg2.jpg" alt="Second slide" style="height: 754px">
-            <div class="carousel-caption">
-              <p class="display-3 text-uppercase slider-head">This is Second Slide</p>
-              <p class="lead slider-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="/images/bg3.jpeg" alt="Third slide" style="height: 754px">
-            <div class="carousel-caption">
-              <p class="display-3 text-uppercase slider-head">This is Third Slide</p>
-              <p class="lead slider-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </section>
-
-    <section>
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container-fluid">
-          <h2 class="jumbotron-head text-center text-uppercase">Welcome to this section</h2>
-
-          <div class="row">
-            <div class="col-md-6 px-4">
-              <p class="jumbotron-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a.
-              </p>
-            </div>
-            <div class="col-md-6 px-4">
-              <div class="mb-4 pb-1">
-                <h4 class="jumbotron-subhead text-uppercase">Increased Speed</h4>
-                <p class="jumbotron-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a.
-                </p>
+      <div class="card">
+        <div class="card-body text-light bg-dark">
+            <div class="row align-items-center">
+              <div class="col-md-3 text-center">
+                <div class="image">
+                  <img class="card-common" src="/images/pexels-1.jpg" width="150" alt="">
+                </div>
+                <div class="image">
+                  <img class="card-common" src="/images/pexels-2.jpg" width="150" alt="">
+                </div>
               </div>
-              <div class="mb-4 pb-1">
-                <h4 class="jumbotron-subhead text-uppercase">Decreased Cost</h4>
-                <p class="jumbotron-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas recusandae voluptati natus architecto asperiores a.
+              <div class="col-md-9 px-4">
+                <div class="card-title text-uppercase mb-4">Title
+                  <hr class="short-hr">
+                  <div class="card-title2">Express</div>
+                </div>
+                <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.</p>
+                <div class="pt-5">
+                  <h2 class="card-subtitle">STANDARD Express</h2>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.<br><br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.Lorem ipsum dol consectetur adipisicing elit. Ill dolor sit amet, consectetur adipisicing elit. Illo, quas.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas. ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.
+                  </p>
+                </div>
+                <div class="pt-5">
+                  <h2 class="card-subtitle">PREMIUM Express</h2>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.<br><br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.Lorem ipsum dol consectetur adipisicing elit. Ill dolor sit amet, consectetur adipisicing elit. Illo, quas.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas. ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.ipsum dolor sit amet, consectetur adipisicing elit. Illo, quas.
+                  </p>
+                </div>
+                <p class="blur-text">9hrs delivery | 10hrs delivery | 12hrs delivery</p>
+                <p>Please refer to us by clicking 
+                  <a class="card-link text-uppercase" href="#">This good Link.</a>
                 </p>
+                <div class="text-center">
+                  <button class="btn custom-card-btn">Get Info | Make a Booking</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
-    <section></section>
   </main>
 
   <footer class="foot">
@@ -156,7 +132,7 @@
             </div>
           </div>
           <div class="col-md-6 px-4">
-            <form class="form" action="">
+            <form action="">
               <div class="row mb-4">
                 <div class="col-md-6">
                   <input class="custom-input form-control" type="text" name="" id="" placeholder="Name">

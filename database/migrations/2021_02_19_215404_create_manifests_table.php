@@ -16,6 +16,7 @@ class CreateManifestsTable extends Migration
         Schema::create('manifests', function (Blueprint $table) {
             $table->id();
             $table->string('flight_no');
+            $table->integer('shipment_id');
             $table->timestamps();
         });
     }

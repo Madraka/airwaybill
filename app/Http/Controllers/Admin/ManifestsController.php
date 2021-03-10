@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Manifest;
+use App\Models\ManifestShipment;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
 
@@ -39,15 +40,24 @@ class ManifestsController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $this->validate($request,[
             'flight_no' => 'required',
-        
         ]);
+        $manifest= Manifest::create([
+            'flight_no'=>$request->flight_no
+            ]);
+        $manifest_id = $manifest->id;
+        foreach($request->shipments as $shipment){
+            // ManifestShipment::create([
+            //         'manifest_id' => $manifest_id,
+            //         'shipment_id' =>$shipment,
+            //     ]);
+            // Shipment::where('id',$shipment)->update([
+            //     'manifest'=>1
+            // ]);
 
-        $manifest = new Manifest();
-        $manifest->flight_no = $request->flight_no;
-        $manifest->shipments()->attach($request->shipments);
-        $manifest->save();
+        }
         return redirect()->route('manifests')->with('success', "Manifest Added Successfully");
     }
 

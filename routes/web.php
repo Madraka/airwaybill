@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/services', function () {
+    return view('services');
+});
 Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
@@ -62,4 +64,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Profile
     Route::get('/user/profile', 'Admin\ProfilesController@index')->name('user.profile');
     Route::post('/user/profile/update', 'Admin\ProfilesController@update')->name('user.profile.update');
+
+    //AWB Generate
+    // Route::get('/awb',)
 });

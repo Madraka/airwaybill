@@ -19,6 +19,8 @@
 </section>
 <!-- Main content -->
 <section class="content">
+    <form action="{{ route('manifest.store') }}" method="POST">
+        @csrf
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
@@ -71,22 +73,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($shipments as $shipment)
                                         <tr>
                                             <td>
-                                                <input type="checkbox">
+                                                <input type="checkbox" name="shipments[]" value="{{$shipment->id}}">
                                             </td>
-                                            <td>12000</td>
-                                            <td>abc</td>
-                                            <td>xyz</td>
+                                            <td>{{$shipment->awb_no}}</td>
+                                            <td>{{$shipment->shipper_name}}</td>
+                                            <td>{{$shipment->receiver_name}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox">
-                                            </td>
-                                            <td>12000</td>
-                                            <td>abc</td>
-                                            <td>xyz</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -95,17 +91,16 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-            </div>
-        </div>
-       
-
-        <div class="row">
-            <div class="col-md-12">
-                <button class="btn btn-success float-sm-right" data-toggle="modal" data-target="#exampleModal">Next</button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-success float-sm-right" type="submit">Save</button>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /.row -->
     </div><!-- /.container-fluid -->
+</form>
 </section>
 <!-- /.content -->
 @endsection

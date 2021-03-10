@@ -1,0 +1,192 @@
+.main {
+	margin-top: 68px;
+	width: 100%;
+}
+.navbar {
+	font-size: 18px;
+	font-weight: 600;
+	padding: 0.8rem 3rem !important;
+	box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.1);
+	/* box-shadow: 0px 2px 15px  */
+}
+.navbar-nav li:hover {
+	z-index: 2;
+	-webkit-transition: all 150ms ease-in-out;
+	-webkit-transform: scale(1.05);
+	-ms-transition: all 150ms ease-in-out;
+	-ms-transform: scale(1.05);
+	-moz-transition: all 150ms ease-in-out;
+	-moz-transform: scale(1.05);
+	transition: all 150ms ease-in-out;
+	transform: scale(1.05);
+}
+.nav-link {
+	color: maroon;
+}
+.nav-link:hover {
+	color: maroon;
+}
+.navbar-toggler {
+	/* color: rgb(78, 78, 78) !important; */
+	background-color: rgb(255, 255, 255);
+	border-color: rgb(156, 156, 156);
+}
+.navbutton {
+	color: rgb(156, 156, 156);
+	font-size: 28px;
+}
+.active a {
+	color: #333333 !important;
+}
+.dropdown-item,
+.dropdown-item:hover {
+	color: maroon;
+}
+.carousel-caption {
+	bottom: 225px !important;
+}
+.jumbotron {
+	padding: 4rem 2rem 2.5rem 2rem;
+	margin: 0;
+}
+.jumbotron-head {
+	margin-bottom: 45px;
+}
+.jumbotron-subhead {
+	font-weight: 400;
+}
+.jumbotron-text {
+	font-size: 17px;
+	color: #555555;
+}
+
+.foot {
+	font-family: 'Nunito', sans-serif;
+	background-image: url(/images/footer-bg.jpg);
+	box-shadow: 0px 5px 15px 15px rgba(0, 0, 0, 0.1);
+}
+.foot-head {
+	margin-bottom: 20px;
+}
+.foot-text {
+	color: rgb(170, 170, 170);
+	margin: 0;
+}
+.foot-link,
+.foot-link:hover {
+	color: red;
+	text-decoration: none !important;
+}
+.footer-link,
+.footer-link:hover {
+	color: white;
+	text-decoration: none !important;
+	font-weight: bolder;
+}
+.custom-input {
+	border: 1px solid #000000;
+	border-radius: unset;
+}
+.custom-footer-btn {
+	margin-top: 20px;
+	border-radius: unset !important;
+	padding: 0.375rem 0.75rem;
+}
+.card {
+	border-left: unset;
+	border-right: unset;
+}
+.card-common {
+	border: 0;
+	border-radius: unset !important;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+.card-common:hover {
+	/* background-color: whitesmoke; */
+	box-shadow: 0px 5px 15px -3px #707070;
+	position: relative;
+	z-index: 2;
+	-webkit-transition: all 300ms ease-in-out;
+	-webkit-transform: scale(1.08);
+	-ms-transition: all 300ms ease-in-out;
+	-ms-transform: scale(1.08);
+	-moz-transition: all 300ms ease-in-out;
+	-moz-transform: scale(1.08);
+	transition: all 300ms ease-in-out;
+	transform: scale(1.08);
+}
+.image {
+	margin: 30px 0;
+}
+.card-title {
+	font-size: 68px;
+	letter-spacing: 9px;
+	color: red;
+	font-weight: 600;
+}
+.card-title2 {
+	font-size: 40px;
+	letter-spacing: 6px !important;
+	/* color: maroon;
+	font-weight: 600; */
+}
+.card-subtitle {
+	font-weight: 500;
+	font-size: 22px;
+	color: red;
+}
+.short-hr {
+	margin: 0;
+	border-bottom: 1.5px solid whitesmoke;
+	width: 190px;
+}
+.blur-text {
+	margin: 20px 0;
+	color: rgb(148, 148, 148);
+	font-size: 15px;
+}
+.card-link,
+.card-link:hover {
+	color: red;
+	text-decoration: none !important;
+	font-weight: bolder;
+}
+.custom-card-btn {
+	font-size: 15px;
+	font-weight: 500;
+	color: black;
+	background-color: red;
+	margin: 20px;
+	border: 1px solid #143a54;
+	border-radius: 8px;
+	padding: 0.32rem 1rem;
+}
+/* @media only screen and (max-width: 600px) {
+	.slider-head {
+		font-size: 10px !important;
+		display: block;
+	}
+	.slider-text {
+		font-size: 10px;
+	}
+} */
+@media (max-width: 992px) {
+	.image {
+		display: inline;
+		margin: 40px 12px;
+	}
+	.card-title {
+		margin-top: 20px;
+	}
+	.form {
+		margin-top: 35px;
+	}
+	.slider-head {
+		font-size: 45px !important;
+		display: block;
+	}
+	.slider-text {
+		font-size: 18px;
+	}
+}
