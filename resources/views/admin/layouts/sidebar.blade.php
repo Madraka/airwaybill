@@ -39,6 +39,12 @@
                          </a>
                     </li>
                     <li class="nav-item">
+                         <a href="/admin/awb" class="nav-link">
+                         <i class="fas fa-shipping-fast"></i>
+                              <p>Create Awb</p>
+                         </a>
+                    </li>
+                    <li class="nav-item">
                          <a href="{{ route('countries') }}" class="nav-link">
                          <i class="fas fa-shipping-fast"></i>
                               <p>Countries</p>

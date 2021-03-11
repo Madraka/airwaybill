@@ -66,5 +66,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/user/profile/update', 'Admin\ProfilesController@update')->name('user.profile.update');
 
     //AWB Generate
-    // Route::get('/awb',)
+    Route::get('/awb','Admin\AwbController@index');
+    Route::post('/generate-awb','Admin\AwbController@generateAwb');
 });
