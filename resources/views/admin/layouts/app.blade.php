@@ -23,7 +23,12 @@
      <!-- custom css -->
      <link rel="stylesheet" href="{{ asset('assets/admin') }}/dist/css/admin.css">
      <link rel="stylesheet" href="{{ asset('css/print.min.css') }}">
-
+     <style>
+          .w-90{
+               width:90% !important;
+          }
+     </style>
+     @yield('style')
 
 </head>
 
@@ -119,13 +124,13 @@
           
           //Then if no tbody just select your table 
           var table = tbody.length ? tbody : $('#myTable');
-          table.append('<tr><td>'+i+'</td><td><input class="form-control" type="number" name="length[]"/></td><td><input class="form-control" type="number" name="breadth[]"/></td><td><input class="form-control" type="number" name="height[]"/></td></tr>');
+          table.append('<tr><td>'+i+'</td><td><input class="form-control w-90" type="number" name="length[]"/></td><td><input class="form-control w-90" type="number" name="breadth[]"/></td><td><input class="form-control w-90" type="number" name="height[]"/></td></tr>');
           
           
           $('#add-row').click(function(){
           i = i+1;
           //Add row
-          table.append('<tr><td>'+i+'</td><td><input class="form-control" type="number" name="length[]"/></td><td><input class="form-control" type="number" name="breadth[]"/></td><td><input class="form-control" type="number" name="height[]"/></td></tr>');
+          table.append('<tr><td>'+i+'</td><td><input class="form-control w-90" type="number" name="length[]"/></td><td><input class="form-control w-90" type="number" name="breadth[]"/></td><td><input class="form-control w-90" type="number" name="height[]"/></td></tr>');
           })
           });
         </script>

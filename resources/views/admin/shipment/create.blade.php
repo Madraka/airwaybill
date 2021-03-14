@@ -1,5 +1,26 @@
 @extends('admin.layouts.app')
 @section('title', 'Add Shipments')
+@section('style')
+<style>
+    .card-body{
+        padding:10px;
+        font-size: 14px;
+    }
+    .card-title{
+        font-size:15px;
+        font-weight: 500;
+    }
+    .card-header{
+        padding:7px;
+    }
+    .w-58{
+        width:58%;
+    }
+    .form-group label{
+        font-weight: 400 !important;
+    }
+</style>
+@endsection
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -57,12 +78,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="awb_no">AWB No.</label>
-                                    <input class="form-control" name="awb_no" type="text" value="">
+                                    <input class="form-control w-58" name="awb_no" type="text" value="">
                                 </div>
                                 <div class="form-group clearfix">
                                     <div class="row">
                                         @foreach ($services as $key=>$service)
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="icheck-primary d-inline">
                                                     <input id="service_id" type="radio" name="service_id"
                                                         value="{{ $service->id }}" onchange="getAwb({{ $service->id }})" @if (!$key) {!! "checked" !!} @endif>
@@ -95,22 +116,22 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="shipper_name">Name:</label>
-                                            <input class="form-control" type="text" name="shipper_name" id="shipper_name">
+                                            <input class="form-control w-90" type="text" name="shipper_name" id="shipper_name">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_address">Address:</label>
-                                            <input class="form-control" type="text" name="shipper_address"
+                                            <input class="form-control w-90" type="text" name="shipper_address"
                                                 id="shipper_address">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_phone">Phone:</label>
-                                            <input class="form-control" type="text" name="shipper_phone"
+                                            <input class="form-control w-90" type="text" name="shipper_phone"
                                                 id="shipper_phone">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="shipper_country">Country</label>
-                                            <select name="shipper_country" class="form-control select2"
+                                            <select name="shipper_country" class="form-control select2 w-90"
                                                 style="width: 100%;">
                                                 <option>--Choose Country--</option>
                                                 @foreach ($countries as $country)
@@ -124,20 +145,20 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="shipper_contact_person">Contact Person Name:</label>
-                                            <input class="form-control" type="text" name="shipper_contact_person"
+                                            <input class="form-control w-90" type="text" name="shipper_contact_person"
                                                 id="shipper_contact_person">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_city">City:</label>
-                                            <input class="form-control" type="text" name="shipper_city" id="shipper_city">
+                                            <input class="form-control w-90" type="text" name="shipper_city" id="shipper_city">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_state">State/Provinence:</label>
-                                            <input class="form-control" type="text" name="shipper_state" id="shipper_state">
+                                            <input class="form-control w-90" type="text" name="shipper_state" id="shipper_state">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_postcode">Post/Zipcode:</label>
-                                            <input class="form-control" type="text" name="shipper_postcode"
+                                            <input class="form-control w-90" type="text" name="shipper_postcode"
                                                 id="shipper_postcode">
                                         </div>
                                     </div>
@@ -162,22 +183,22 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="receiver_name">Name:</label>
-                                            <input class="form-control" type="text" name="receiver_name" id="receiver_name">
+                                            <input class="form-control w-90" type="text" name="receiver_name" id="receiver_name">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_address">Address:</label>
-                                            <input class="form-control" type="text" name="receiver_address"
+                                            <input class="form-control w-90" type="text" name="receiver_address"
                                                 id="receiver_address">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_phone">Phone:</label>
-                                            <input class="form-control" type="text" name="receiver_phone"
+                                            <input class="form-control w-90" type="text" name="receiver_phone"
                                                 id="receiver_phone">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="receiver_country">Country</label>
-                                            <select name="receiver_country" class="form-control select2"
+                                            <select name="receiver_country" class="form-control select2 w-90"
                                                 style="width: 100%;">
                                                 <option>--Choose Country--</option>
                                                 @foreach ($countries as $country)
@@ -191,21 +212,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="receiver_contact_person">Contact Person Name:</label>
-                                            <input class="form-control" type="text" name="receiver_contact_person"
+                                            <input class="form-control w-90" type="text" name="receiver_contact_person"
                                                 id="receiver_contact_person">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_city">City:</label>
-                                            <input class="form-control" type="text" name="receiver_city" id="receiver_city">
+                                            <input class="form-control w-90" type="text" name="receiver_city" id="receiver_city">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_state">State/Provinence:</label>
-                                            <input class="form-control" type="text" name="receiver_state"
+                                            <input class="form-control w-90" type="text" name="receiver_state"
                                                 id="receiver_state">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_postcode">Post/Zipcode:</label>
-                                            <input class="form-control" type="text" name="receiver_postcode"
+                                            <input class="form-control w-90" type="text" name="receiver_postcode"
                                                 id="receiver_postcode">
                                         </div>
                                     </div>
@@ -227,7 +248,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <input class="form-control" type="text" name="goods_description" id="goods_description">
+                                <textarea class="form-control w-90" rows="5" type="text" name="goods_description" id="goods_description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -242,7 +263,7 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <input name="declared_value_for_custom" class="form-control" type="text"
+                                    <input name="declared_value_for_custom" class="form-control w-90" type="text"
                                         placeholder="USD. 956.00">
                                 </p>
                             </div>
@@ -267,9 +288,9 @@
                                     <td>Grams</td>
                                 </tr>
                                 <tr>
-                                    <td><input name="pieces" class="form-control" type="number" /></td>
-                                    <td><input name="kilograms" class="form-control" type="number" /></td>
-                                    <td><input name="grams" class="form-control" type="number" /></td>
+                                    <td><input name="pieces" class="form-control w-90" type="number" /></td>
+                                    <td><input name="kilograms" class="form-control w-90" type="number" /></td>
+                                    <td><input name="grams" class="form-control w-90" type="number" /></td>
                                 </tr>
                             </tbody>
                         </table>
