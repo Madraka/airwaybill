@@ -26,19 +26,19 @@
                 <div class="card card-primary">
                     <div class="card-body">
                        
-                        <form action="/admin/generate-awb" method="post">
+                        <form action="{{ route('awb_generate') }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Enter Awb Number</label>
-                                        <input class="form-control" type="text" value="" name="awb[]" id="awb" placeholder="Awb Number">
+                                        <input class="form-control" type="text" name="awb" id="awb" placeholder="Awb Number">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn btn-info">Add More Numbers</button>
+                                    <button class="btn btn-info">Add Awb</button>
                                 </div>
-                                <button type="submit" class="ml-2 mt-5 btn btn-success">Generate</button>
+                                <a href="/admin/generate-random-awb" class="ml-2 mt-5 btn btn-success">Auto Generate 50 Awb</a>
                                 <!-- /.col -->
                             </div>
                             

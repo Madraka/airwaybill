@@ -14,6 +14,6 @@ class Shipment extends Model
     }
     public function manifests()
     {
-        return $this->hasMany(\App\Models\Manifest::class,'manifest_id');
+        return $this->belongsTo(\App\Models\Manifest::class);
     }
 }

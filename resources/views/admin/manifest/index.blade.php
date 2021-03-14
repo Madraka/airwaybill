@@ -28,6 +28,7 @@
                         <a type="button" class="btn  btn-success float-sm-right" href="{{ route('manifest.create') }}"> Create Mainfest</a>
                     </div>
                     <div class="card-body">
+                        {{-- {{$manifests}} --}}
                         <table id="example1" class="table table-hover dataTable no-footer">
                             <thead>
                                 <tr>
@@ -44,13 +45,41 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($manifests as $manifest)
+                                    
                                 <tr>
-                                    <td>S.No.</td>
-                                    <td>MAWB No.</td>
-                                    <td>Flight No.</td>
-                                    <td>AWB No.</td>
-                                    <td>From(Shipper)</td>
-                                    <td>To(Receiver)</td>
+                                    <td>{{$manifest->id}}</td>
+                                    <td>
+                                      Mawb no
+                                    </td>
+                                    <td>{{$manifest->flight_no}}</td>
+                                    <td>
+                                        <ul>
+                                            @foreach($manifest->shipments as $shipment)
+                                            <li>
+                                                {{$shipment->awb_no}}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            @foreach($manifest->shipments as $shipment)
+                                            <li>
+                                                {{$shipment->shipper_name}}
+                                            </li>
+                                            @endforeach
+                                        </ul> 
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            @foreach($manifest->shipments as $shipment)
+                                            <li>
+                                                {{$shipment->receiver_name}}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                     <td>Contents</td>
                                     <td>Destination</td>
                                     <td>Declared Value</td>
@@ -63,6 +92,9 @@
                                         </div>
                                     </td>
                                 </tr>
+
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>

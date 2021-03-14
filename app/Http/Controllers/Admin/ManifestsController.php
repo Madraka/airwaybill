@@ -17,7 +17,7 @@ class ManifestsController extends Controller
      */
     public function index()
     {
-        $manifests = Manifest::orderBy('id','desc')->get();
+        $manifests = Manifest::with('shipments')->orderBy('id','desc')->get();
         return view('admin.manifest.index',compact('manifests'));
     }
 
@@ -48,15 +48,11 @@ class ManifestsController extends Controller
             'flight_no'=>$request->flight_no
             ]);
         $manifest_id = $manifest->id;
-        foreach($request->shipments as $shipment){
-            // ManifestShipment::create([
-            //         'manifest_id' => $manifest_id,
-            //         'shipment_id' =>$shipment,
-            //     ]);
-            // Shipment::where('id',$shipment)->update([
-            //     'manifest'=>1
-            // ]);
-
+        foreach($request->shipments as $shipment){            
+            Shipment::where('id',$shipment)->update([
+                'manifest'=>1,
+                'manifest_id' => $manifest_id
+            ]); 
         }
         return redirect()->route('manifests')->with('success', "Manifest Added Successfully");
     }

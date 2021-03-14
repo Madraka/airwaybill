@@ -67,5 +67,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     //AWB Generate
     Route::get('/awb','Admin\AwbController@index');
-    Route::post('/generate-awb','Admin\AwbController@generateAwb');
+    Route::get('/generate-random-awb/{id}','Admin\AwbController@generateRandomAwb')->name('awb_random_generate');
+    Route::post('/generate-awb','Admin\AwbController@generateAwb')->name('awb_generate');
+    Route::get('/awb/{id}','Admin\AwbController@getAwb');
+
+    //
+    Route::get('/customers','Admin\UsersController@showCustomer')->name('customers');
+    Route::get('/customer/create', 'Admin\UsersController@createCustomer')->name('customer.create')->middleware('admin');
+    Route::post('/customer/store', 'Admin\UsersController@store')->name('customer.store')->middleware('admin');
+
+    Route::get('/cus_ref/{id}','Admin\UsersController@getRefNo');
 });

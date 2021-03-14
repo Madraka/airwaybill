@@ -8,6 +8,7 @@ use App\Models\Dimension;
 use Illuminate\Http\Request;
 use App\Models\Shipment;
 use App\Models\Service;
+use App\User;
 
 class ShipmentsController extends Controller
 {
@@ -31,7 +32,8 @@ class ShipmentsController extends Controller
     {
         $services = Service::orderBy('id','desc')->get();
         $countries = Country::orderBy('name','asc')->get();
-        return view('admin.shipment.create',compact('services','countries'));
+        $customers = User::with('customer')->where('role_id',3)->get();
+        return view('admin.shipment.create',compact('services','countries','customers'));
     }
 
     /**
@@ -43,7 +45,7 @@ class ShipmentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'account_number' => 'required',
+            'customer_id' => 'required',
             'awb_no' => 'required',
             'customer_reference' => 'required',
             'service_id' => 'required',
@@ -69,7 +71,8 @@ class ShipmentsController extends Controller
         ]);
 
         $shipment = new Shipment();
-        $shipment->account_number = $request->account_number;
+        $shipment->account_number = 12345;
+        $shipment->customer_id = $request->customer_id;
         $shipment->awb_no = $request->awb_no;
         $shipment->customer_reference = $request->customer_reference;
         $shipment->service_id = $request->service_id;

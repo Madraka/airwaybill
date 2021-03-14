@@ -39,7 +39,12 @@
                                 <input class="form-control" type="text" name="name" id="name" placeholder="Service Name" required>
                             </div>
                         </div>
-                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Enter Awb Number</label>
+                                <input class="form-control" type="text" name="awb" id="awb" placeholder="Awb Number">
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-success">Add</button>
                         <!-- /.col -->
                     </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAwbsTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAwbsTable extends Migration
      */
     public function up()
     {
-        Schema::create('awbs', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('awb_number')->nullable();
-            $table->integer('status')->default(0);
-            $table->integer('service_id');
+            $table->string('address');
+            $table->bigInteger('phone');
+            $table->bigInteger('reference_no');
+            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateAwbsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('awbs');
+        Schema::dropIfExists('customers');
     }
 }

@@ -41,7 +41,9 @@ class CreateShipmentsTable extends Migration
             $table->smallInteger('pieces');
             $table->smallInteger('kilograms');
             $table->smallInteger('grams');
-            $table->tinyInteger('manifest')->default(0)->comment('1=created');
+            $table->tinyInteger('manifest')->default(0)->comment('1=created manifest');
+            $table->tinyInteger('manifest_id')->default(0);
+            $table->integer('customer_id')->default(0);
             $table->timestamps();
         });
     }

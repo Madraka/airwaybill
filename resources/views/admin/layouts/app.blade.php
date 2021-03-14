@@ -22,6 +22,8 @@
      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
      <!-- custom css -->
      <link rel="stylesheet" href="{{ asset('assets/admin') }}/dist/css/admin.css">
+     <link rel="stylesheet" href="{{ asset('css/print.min.css') }}">
+
 
 </head>
 
@@ -127,6 +129,42 @@
           })
           });
         </script>
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+</script>
+<script>
+     var service_id = $('input[name="service_id"]:checked').val();
+     getAwb(service_id)
+     function getAwb(id) {
+        $.ajax({
+           type:'GET',
+           url:'/admin/awb/'+id,
+           success:function(data) {
+               $('input[name="awb_no"]').val(data)  
+           }
+        });
+     }
+  </script>
+  <script>
+       function getref(cusId){
+          $.ajax({
+           type:'GET',
+           url:'/admin/cus_ref/'+cusId,
+           success:function(data) {
+               $('input[name="customer_reference"]').val(data) 
+           }
+        });
+       }
+  </script>
+  <script src = "{{asset('js/print.min.js')}}">
+  </script>
+  <script>
+       function print(){
+          printJS({
+               printable: "{{asset('/images/fedex_test.jpeg')}}", type: 'image',
+               })
+       }
+  </script>
 </body>
 
 </html>

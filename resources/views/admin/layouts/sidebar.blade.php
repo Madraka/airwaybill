@@ -38,12 +38,12 @@
                               <p>Services</p>
                          </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                          <a href="/admin/awb" class="nav-link">
                          <i class="fas fa-shipping-fast"></i>
                               <p>Create Awb</p>
                          </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                          <a href="{{ route('countries') }}" class="nav-link">
                          <i class="fas fa-shipping-fast"></i>
@@ -58,6 +58,12 @@
                          <i class="fas fa-users"></i>
                               <p>Users</p>
                               <span class="badge badge-info right">2</span>
+                         </a>
+                    </li>
+                    <li class="nav-item">
+                         <a href="{{ route('customers') }}" class="nav-link">
+                         <i class="fas fa-users"></i>
+                              <p>Customers</p>
                          </a>
                     </li>
                    @endif

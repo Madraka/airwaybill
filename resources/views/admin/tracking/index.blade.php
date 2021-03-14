@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Services</h1>
+                <h1>Tracking</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Services</li>
+                    <li class="breadcrumb-item active">Tracking</li>
                 </ol>
             </div>
         </div>
@@ -33,7 +33,6 @@
                                 <tr>
                                     <th>S.No</th>
                                     <th>Service Name</th>
-                                    <th>AWBs</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,16 +42,9 @@
                                     <td>{{ $loop->iteration }}</td>
 
                                     <td>{{ $service->name }}</td>
-                                    <td>
-                                        <ul>
-                                        @foreach ($service->awb as $awb)
-                                         <li>{{$awb->awb_number}}</li>
-                                        @endforeach
-                                    </ul>
-                                    </td>
+
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href='{{route('awb_random_generate',['id'=>$service->id])}}' class="btn btn-info">Auto Generate 10 Awb</a>
                                             <a href="{{ route('service.edit',['id'=>$service->id]) }}" type="button" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                             <a href="{{ route('service.destroy',['id'=>$service->id]) }}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 

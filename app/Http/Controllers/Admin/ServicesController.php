@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Awb;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Service::orderBy('id', 'desc')->get();
+        $services = Service::with('awb')->orderBy('id', 'desc')->get();
         return view('admin.service.index', compact('services'));
     }
 
@@ -45,7 +46,37 @@ class ServicesController extends Controller
         $service->name = $request->name;
       
         $service->save();
+        $service_id = $service->id;
+        $number = $request->awb;
+        if ($this->checkNumberExistence($number)) {
+            return redirect()->route('services')->with('error','AWB already exists');
+        }
+        Awb::create([
+            'awb_number' =>$number,
+            'status' => 0,
+            'service_id' => $service_id
+        ]);
+
         return redirect()->route('services')->with('success', "Service Added Successfully");
+    }
+
+    public function generateRandomAwb(){
+        for($i = 0; $i<50;$i++){
+            $number = mt_rand(1000000000, 9999999999); // better than rand()
+    
+            if ($this->checkNumberExistence($number)) {
+                return $this->generateRandomAwb();
+            }
+            Awb::create([
+                'awb_number' =>$number,
+                'status' => 0
+                ]);
+        }
+        return redirect('/admin/awb')->with('success','Awb succesfully generated.');
+    }
+
+    public function checkNumberExistence($number) {
+        return Awb::where('awb_number',$number)->exists();
     }
 
     /**

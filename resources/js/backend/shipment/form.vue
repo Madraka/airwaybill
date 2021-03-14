@@ -1,28 +1,6 @@
-@extends('admin.layouts.app')
-@section('title', 'Add Shipments')
-@section('content')
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Shipment Form</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Shipment</a></li>
-                        <li class="breadcrumb-item active">Add Shipment</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            @include('admin.layouts.formerror')
-            <form class="form" method="post" action="{{ route('shipment.store') }}">
+<template>
+    <div>
+        <form class="form" method="post">
                 @csrf
                 <div class="card card-default">
                     <div class="card-header">
@@ -38,18 +16,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="account_number">Select Customer</label>
-                                    <select name="customer_id" class="form-control select2" style="width: 100%;" onchange="getref(value)">
-                                        <option value="">--Choose Customer--</option>
-                                        @foreach($customers as $customer)
-                                        <option value="{{$customer->customer->id}}">{{$customer->name}}</option>
-                                        @endforeach   
+                                    <label for="account_number">Account Number:</label>
+                                    <select name="account_number" class="form-control select2" style="width: 100%;">
+                                        <option >--Choose Account--</option>
+                                        <option value="1234">1234</option>
+                                        <option value="1235">1235</option>
+                                        <option value="1236">1236</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Customer Reference:</label>
                                     <input class="form-control" type="text" name="customer_reference"
-                                        id="customer_reference" placeholder="Customer Reference" readonly="readonly" value="">
+                                        id="customer_reference" placeholder="Customer Reference">
                                 </div>
                                 <!-- /.form-group -->
 
@@ -57,19 +35,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="awb_no">AWB No.</label>
-                                    <input class="form-control" name="awb_no" type="text" value="">
+                                    <input class="form-control" name="awb_no" type="text" value="3362218565">
                                 </div>
                                 <div class="form-group clearfix">
                                     <div class="row">
-                                        @foreach ($services as $key=>$service)
-                                            <div class="col-md-6">
-                                                <div class="icheck-primary d-inline">
-                                                    <input id="service_id" type="radio" name="service_id"
-                                                        value="{{ $service->id }}" onchange="getAwb({{ $service->id }})" @if (!$key) {!! "checked" !!} @endif>
-                                                    <label for="service_id">{{ $service->name }}</label>
-                                                </div>
-                                            </div>
-                                        @endforeach
 
                                     </div>
                                 </div>
@@ -113,9 +82,9 @@
                                             <select name="shipper_country" class="form-control select2"
                                                 style="width: 100%;">
                                                 <option>--Choose Country--</option>
-                                                @foreach ($countries as $country)
+                                                <!-- @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                @endforeach
+                                                @endforeach -->
                                             </select>
                                         </div>
                                         <!-- /.form-group -->
@@ -180,9 +149,9 @@
                                             <select name="receiver_country" class="form-control select2"
                                                 style="width: 100%;">
                                                 <option>--Choose Country--</option>
-                                                @foreach ($countries as $country)
+                                                <!-- @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                @endforeach
+                                                @endforeach -->
                                             </select>
                                         </div>
                                         <!-- /.form-group -->
@@ -311,8 +280,17 @@
                 </div>
                 <!-- /.row -->
             </form>
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+    </div>
+</template>
+<script>
+export default {
+    data: function(){
+        return{
 
-@endsection
+        }
+    },
+    methods: {
+
+    }
+}
+</script>

@@ -26,6 +26,7 @@
       <div class="col-12">
         <div class="card card-primary">
           <div class="card-header">
+            <button onclick="print()" class="btn btn-warning ml-2 float-sm-right">Test Print</button>
             <a type="button" class="btn  btn-success float-sm-right" href="{{ route('shipment.create') }}"> Add Shipment</a>
           </div>
           <div class="card-body">

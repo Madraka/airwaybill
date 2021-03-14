@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Models\Profile;
 use App\Models\UserRole;
+use App\Models\Customer;
 use Session;
 
 class UsersController extends Controller
@@ -66,7 +67,15 @@ class UsersController extends Controller
             'user_id' => $users->id,
             'avatar' => 'uploads/avatars/male.jpg'
         ]);
-
+        if($request->role_id == 3){
+            Customer::create([
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'reference_no' => $request->ref,
+                'user_id' => $users->id
+            ]);
+            return redirect()->route('customers')->with('success', "Customer Added Successfully");
+        }
         return redirect()->route('users')->with('success', "User Added Successfully");
     }
 
@@ -127,5 +136,18 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->route('users')->with('success', "User Deleted Successfully");
+    }
+
+    public function showCustomer(){
+        $customers = User::with('customer')->where('role_id',3)->get();
+        return view('admin.customer.index',compact('customers'));
+    }
+    public function createCustomer(){
+        return view('admin.customer.create');
+    }
+    public function getRefNo($id){
+        $ref = Customer::where('id',$id)->first();
+        $refNo = $ref->reference_no;
+        return $refNo;
     }
 }

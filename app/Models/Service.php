@@ -28,5 +28,8 @@ class Service extends Model
     {
         return $this->hasMany(\App\Models\Shipment::class,'service_id');
     }
+    public function awb(){
+        return $this->hasMany(\App\Models\Awb::class);
+    }
     
 }

@@ -41,4 +41,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(\App\Models\Profile::class,'user_id');
     }
+    public function customer(){
+        return $this->hasOne(\App\Models\Customer::class);
+    }
 }
