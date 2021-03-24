@@ -7,6 +7,7 @@
 	font-weight: 600;
 	padding: 0.8rem 3rem !important;
 	box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.1);
+	background-color: #6a090a;
 	/* box-shadow: 0px 2px 15px  */
 }
 .navbar-nav li:hover {
@@ -21,10 +22,10 @@
 	transform: scale(1.05);
 }
 .nav-link {
-	color: maroon;
+	color: #fff;
 }
 .nav-link:hover {
-	color: maroon;
+	color: #ff5f13;
 }
 .navbar-toggler {
 	/* color: rgb(78, 78, 78) !important; */
@@ -36,7 +37,7 @@
 	font-size: 28px;
 }
 .active a {
-	color: #333333 !important;
+	color: #ff5f13 !important;
 }
 .dropdown-item,
 .dropdown-item:hover {
@@ -59,11 +60,42 @@
 	font-size: 17px;
 	color: #555555;
 }
-
+/*Do More Section*/
+.do-more .card{
+    padding: 84px;
+    border-radius: 10px;
+    background-image: linear-gradient(237deg, #2f396b, #1b2145);
+}
+.do-more .card h3{
+	color: #fff;
+    margin-bottom: 30px;
+}
+.do-more .card p{
+	color: #fff;
+    margin-bottom: 15px;
+}
+.do-more .single-cardinfo{
+ padding: 10px 5px;
+	border: 1px solid #fff;
+}
+.do-more .single-cardinfo p{
+margin-bottom: 0px;
+ font-size: 13px;
+    text-align: center;
+}
 .foot {
 	font-family: 'Nunito', sans-serif;
-	background-image: url(/images/footer-bg.jpg);
+	background-color: #6a090a ;
 	box-shadow: 0px 5px 15px 15px rgba(0, 0, 0, 0.1);
+}
+.foot ul{
+	margin: 0;
+    padding: 0;
+    list-style-type: none;
+    }
+.foot ul li a{
+color: #fff;
+text-decoration: none;
 }
 .foot-head {
 	margin-bottom: 20px;
