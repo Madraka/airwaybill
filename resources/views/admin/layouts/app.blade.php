@@ -7,7 +7,7 @@
      <meta http-equiv="x-ua-compatible" content="ie=edge">
 
      <title>@yield('title')</title>
-     <link rel="icon" type="image/png" href=""/>
+     <link rel="icon" type="image/png" href="{{ asset('/assets/images/settings/'. $sitesetting->favicon) }}"/>
      <!-- Font Awesome Icons -->
      <link rel="stylesheet" href="{{ asset('assets/admin') }}/plugins/fontawesome-free/css/all.min.css">
      <!-- overlayScrollbars -->

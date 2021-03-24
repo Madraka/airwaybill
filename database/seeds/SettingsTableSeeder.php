@@ -12,9 +12,9 @@ class SettingsTableSeeder extends Seeder
     public function run()
     {
         \App\Models\Setting::create([
-            'favicon'=>'/uploads/settings/favicon.png',
+            'favicon'=>'favicon.png',
             'company_name'=>'Cosmio Infotech',
-            'company_logo'=>'/uploads/settings/logo.png',
+            'company_logo'=>'logo.png',
             'company_description'=>'Company Description',
             'company_email'=>'maharjanricky@gmail.com',
             'company_address'=>'Koteshwor-35,Kathmandu',

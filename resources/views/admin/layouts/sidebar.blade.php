@@ -1,9 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
-     <a href="index3.html" class="brand-link">
-          <img src="" alt="Logo" class="brand-image img-circle elevation-3"
-               style="opacity: .8">
-          <span class="brand-text font-weight-light">Cosmio</span>
+     <a href="{{ route('dashboard') }}" class="brand-link text-center">
+          <img src="{{ asset('/assets/images/settings/'. $sitesetting->company_logo) }}" alt="Logo" class="brand-image">
      </a>
 
      <!-- Sidebar -->
@@ -67,6 +65,41 @@
                          </a>
                     </li>
                    @endif
+                   <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                         <i class="fas fa-plane-departure"></i>
+                         <p>
+                              Website CMS
+                              <i class="fas fa-angle-left right"></i>    
+                         </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                              <a href="{{ route('admin.sliders') }}" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Slider</p>
+                              </a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ route('admin.welcomesection') }}" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Welcome Section</p>
+                              </a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ route('admin.cmsservices') }}" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Services</p>
+                              </a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ route('admin.pages') }}" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Pages</p>
+                              </a>
+                         </li>
+                    </ul>
+               </li>
                     <li class="nav-header">Settings</li>
                     <li class="nav-item">
                          <a href="{{ route('settings') }}" class="nav-link">
