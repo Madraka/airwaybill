@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <label>Customer Reference:</label>
                                     <input class="form-control" type="text" name="customer_reference"
-                                        id="customer_reference" placeholder="Customer Reference" readonly="readonly" value="">
+                                        id="customer_reference" placeholder="Customer Reference" readonly="readonly" value="{{ $shipment->customer_reference }}">
                                 </div>
                                 <!-- /.form-group -->
 
@@ -135,7 +135,7 @@
                                                 style="width: 100%;">
                                                 <option>--Choose Country--</option>
                                                 @foreach ($countries as $country)
-                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                    <option value="{{ $country->id }}" {{ $shipment->shipper_country ==  $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -202,7 +202,7 @@
                                                 style="width: 100%;">
                                                 <option>--Choose Country--</option>
                                                 @foreach ($countries as $country)
-                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                    <option value="{{ $country->id }}" {{ $shipment->receiver_country ==  $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -337,3 +337,30 @@
     <!-- /.content -->
 
 @endsection
+@section('script')
+<script>
+    var service_id = $('input[name="service_id"]:checked').val();
+    getAwb(service_id)
+    function getAwb(id) {
+       $.ajax({
+          type:'GET',
+          url:'/admin/awb/'+id,
+          success:function(data) {
+              $('input[name="awb_no"]').val(data)  
+          }
+       });
+    }
+ </script>
+ <script>
+      function getref(cusId){
+         $.ajax({
+          type:'GET',
+          url:'/admin/cus_ref/'+cusId,
+          success:function(data) {
+              $('input[name="customer_reference"]').val(data) 
+          }
+       });
+      }
+ </script>
+@endsection
+
