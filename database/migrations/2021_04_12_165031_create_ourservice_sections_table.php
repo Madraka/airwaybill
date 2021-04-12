@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCMSServicesTable extends Migration
+class CreateOurserviceSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateCMSServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_m_s_services', function (Blueprint $table) {
+        Schema::create('ourservice_sections', function (Blueprint $table) {
             $table->id();
-            $table->integer('order');
-            $table->string('icon')->nullable();
             $table->string('title');
-            $table->string('slug');
-            $table->string('image')->nullable();
             $table->text('description');
             $table->timestamps();
         });
@@ -32,6 +28,6 @@ class CreateCMSServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_m_s_services');
+        Schema::dropIfExists('ourservice_sections');
     }
 }

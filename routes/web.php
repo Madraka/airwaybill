@@ -87,6 +87,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/welcomesection/edit/{id}', 'Admin\WelcomeSectionController@edit')->name('admin.welcomesection.edit');
     Route::post('/welcomesection/update/{id}', 'Admin\WelcomeSectionController@update')->name('admin.welcomesection.update');
     Route::get('/welcomesection/delete/{id}', 'Admin\WelcomeSectionController@destroy')->name('admin.welcomesection.destroy');
+     // OursectionController
+     Route::get('/ourservicesection', 'Admin\OursectionController@index')->name('admin.ourserviceSection');
+     Route::get('/ourservicesection/create', 'Admin\OursectionController@create')->name('admin.ourserviceSection.create');
+     Route::post('/ourservicesection/store', 'Admin\OursectionController@store')->name('admin.ourserviceSection.store');
+     Route::get('/ourservicesection/edit/{id}', 'Admin\OursectionController@edit')->name('admin.ourserviceSection.edit');
+     Route::post('/ourservicesection/update/{id}', 'Admin\OursectionController@update')->name('admin.ourserviceSection.update');
+     Route::get('/ourservicesection/delete/{id}', 'Admin\OursectionController@destroy')->name('admin.ourserviceSection.destroy');
     // CMS Services
     Route::get('/cms-services', 'Admin\CMSServicesController@index')->name('admin.cmsservices');
     Route::get('/cms-service/create', 'Admin\CMSServicesController@create')->name('admin.cmsservice.create');
@@ -106,6 +113,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 // Frontend
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('/services', 'HomeController@services')->name('services');
+Route::get('/ourservice/{slug}', 'HomeController@ourservices')->name('front.ourservices');
+Route::get('/page/{slug}', 'HomeController@page')->name('page');
 Route::get('/emails', 'EmailsController@index')->name('emails');
 Route::post('/sendemail', 'EmailsController@send')->name('sendemail');
