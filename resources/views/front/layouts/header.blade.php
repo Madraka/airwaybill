@@ -14,13 +14,20 @@
               <a class="nav-link" href="{{ route('index') }}">Home</a>
             </li>
             <li class="mx-2 px-2 nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="{{ route('aboutus') }}">About Us</a>
             </li>
             <li class="mx-2 px-2 nav-item">
-              <a class="nav-link" href="{{ route('index') }}/#ourservices">Services</a>
+              <div class="dropdown">
+                <a class="nav-link dropbtn" href="{{ route('index') }}/#ourservices">Services</a>
+                <div class="dropdown-content">
+                @foreach($cmsservices as $service)
+                  <a href="{{ route('front.ourservices',['slug' => $service->slug]) }}">{{ $service->title }}</a>
+                @endforeach
+                </div>
+              </div>
             </li>
             <li class="mx-2 px-2 nav-item">
-              <a class="nav-link" href="#contact">Contact Us</a>
+              <a class="nav-link" href="{{ route('contactus') }}">Contact Us</a>
             </li>
             <li class="mx-2 px-2 nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

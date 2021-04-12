@@ -1,3 +1,5 @@
+@extends('front.layouts.app')
+@section('content')
 <main class="contact-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -5,14 +7,14 @@
                     <h3 class=" contact-header">CONTACT US</h3>
                     <div class="line-deco"></div>
                     <ul class="my-3 list-items">
-                        <li><i class="fas fa-home icon-border"></i>Atlas<br>
-                            <p class="contact-sub-title">Thamel, Kathmandu, Nepal</p>
+                        <li><i class="fas fa-home icon-border"></i>{{ $sitesetting->company_name }}<br>
+                            <p class="contact-sub-title">{{ $sitesetting->company_address }}</p>
                         </li>
                         <li><i class="fas fa-phone icon-border"></i>Call us<br>
-                            <p class="contact-sub-title">01-00000000/01-00000000</p>
+                            <p class="contact-sub-title">{{ $sitesetting->company_phone }} / {{ $sitesetting->company_mobile }}</p>
                         </li>
                         <li><i class="fas fa-envelope icon-border"></i>Mail<br>
-                            <p class="contact-sub-title">info.atlas@example.com</p>
+                            <p class="contact-sub-title">{{ $sitesetting->company_email }}</p>
                         </li>
                     </ul>
                 </div>
@@ -48,3 +50,4 @@
             </div>
         </div>
     </main>
+    @endsection

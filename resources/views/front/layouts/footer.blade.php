@@ -9,6 +9,7 @@
               <p class="foot-text">{{ $sitesetting->company_address }}</p>
               <p class="foot-text">{{ $sitesetting->company_phone }}</p>
               <p class="foot-text">{{ $sitesetting->company_mobile }}</p>
+              <p class="foot-text">{{ $sitesetting->company_email }}</p>
               <div class="mt-3" style="color: rgb(170, 170, 170);">
                 <a class="foot-link" href="{{ route('page',['slug'=>'terms-and-conditions']) }}">Terms & Conditions</a> | 
                 <a class="foot-link" href="{{ route('page',['slug'=>'privacy-policy']) }}">Privacy Policy</a>

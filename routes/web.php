@@ -115,5 +115,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/ourservice/{slug}', 'HomeController@ourservices')->name('front.ourservices');
 Route::get('/page/{slug}', 'HomeController@page')->name('page');
+Route::get('/contactus', 'HomeController@contactus')->name('contactus');
+Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 Route::get('/emails', 'EmailsController@index')->name('emails');
 Route::post('/sendemail', 'EmailsController@send')->name('sendemail');

@@ -30,4 +30,10 @@ class HomeController extends Controller
     	$page = Page::where('slug',$slug)->first();
         return view('front.page',compact('page'));
     }
+    public function aboutus(){
+        return view('front.aboutus');
+    }
+    public function contactus(){
+        return view('front.contactus');
+    }
 }

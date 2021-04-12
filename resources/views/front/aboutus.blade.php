@@ -1,3 +1,5 @@
+@extends('front.layouts.app')
+@section('content')
 <div class="aboutus-section">
         <div class="container">
             <div class="row">
@@ -75,3 +77,4 @@
             </div>
         </div>
     </div>
+    @endsection
