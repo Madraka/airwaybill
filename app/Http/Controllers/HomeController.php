@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CMSService;
+use App\Models\OurserviceSection;
 use Illuminate\Http\Request;
+use App\Models\Page;
+
 
 class HomeController extends Controller
 {
@@ -16,8 +20,14 @@ class HomeController extends Controller
     {
         return view('front.welcome');
     }
-    public function services()
+    public function ourservices($slug)
     {
-        return view('front.services');
+        $ourservice = CMSService::where('slug',$slug)->first();
+        return view('front.services',compact('ourservice'));
+    }
+    public function page($slug)
+    {
+    	$page = Page::where('slug',$slug)->first();
+        return view('front.page',compact('page'));
     }
 }

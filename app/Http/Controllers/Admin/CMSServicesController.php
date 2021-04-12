@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CMSService;
+use Image;
+use Validator;
 
 class CMSServicesController extends Controller
 {
@@ -12,15 +14,15 @@ class CMSServicesController extends Controller
     {
         $this->middleware('auth');
     }
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-     $cmsservices = CMSService::orderBy('id', 'desc')->get();
-        return view('admin.cmsservices.index',compact('cmsservices'));
+        $services = CMSService::orderBy('order', 'asc')->get();
+        return view('admin.cmsservices.index', compact('services'));
     }
 
     /**
@@ -30,7 +32,7 @@ class CMSServicesController extends Controller
      */
     public function create()
     {
-       return view('admin.cmsservices.create');
+        return view('admin.cmsservices.create');
     }
 
     /**
@@ -42,23 +44,36 @@ class CMSServicesController extends Controller
     public function store(Request $request)
     {
         //--- Validation Section
-          $this->validate($request,[
+        $this->validate($request, [
             'title'      => 'required',
             'description'      => 'required',
         ]);
         //--- Validation Section Ends
 
         //--- Logic Section
-        $cmsservice = new CMSService();
-    
-      
+        $service = new CMSService();
+        $service->order = $request->order;
+        $service->icon = $request->icon;
+        $service->title = $request->title;
+        $service->description = $request->description;
 
-        $cmsservice->save();
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $image = time() . $file->getClientOriginalName();
+            $file->move('assets/images/cmsservices', $image);
+            $service->image = $image;
+
+            // resize image to fixed size
+            //$thumb_image = $image.'_thumb';
+            // Image::make($file)->resize(122,122)->save(public_path('images/services',$thumb_image));
+            //$service->thumbnail = $thumb_image;
+        }
+        $service->save();
         //--- Logic Section Ends
 
         //--- Redirect Section        
-        return redirect()->route('admin.cmsservices')->with('success',"cmsservices Created Successfully");
-         
+        return redirect()->route('admin.cmsservices')->with('success', "service Created Successfully");
+
         //--- Redirect Section Ends    
     }
 
@@ -81,8 +96,8 @@ class CMSServicesController extends Controller
      */
     public function edit($id)
     {
-        $cmsservice = CMSService::findOrFail($id);
-        return view('admin.cmsservices.edit',compact('cmsservice'));
+        $service = CMSService::findOrFail($id);
+        return view('admin.cmsservices.edit', compact('service'));
     }
 
     /**
@@ -94,21 +109,36 @@ class CMSServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
- //--- Validation Section
- $this->validate($request,[
-    'title'      => 'required',
-    'description'      => 'required',
-]);
-         //--- Logic Section
-        $cmsservice = CMSService::findOrFail($id);
-      
-     
+        //--- Validation Section
+        $this->validate($request, [
+            'title'      => 'required',
+            'description'      => 'required',
+        ]);
+        //--- Validation Section Ends
+        //--- Logic Section
+        $service = CMSService::findOrFail($id);
+        $service->order = $request->order;
+        $service->icon = $request->icon;
+        $service->title = $request->title;
+        $service->description = $request->description;
 
-        $cmsservice->save();
+        if ($request->file('image')) {
+            @unlink(public_path('assets/images/cmsservices/' . $service->image));
+            $file = $request->file('image');
+            $image = time() . $file->getClientOriginalName();
+            $file->move('assets/images/cmsservices', $image);
+            $service->image = $image;
+
+            // resize image to fixed size
+            // $thumb_image = $image.'_thumb';
+            // Image::make($file)->resize(122,122)->save(public_path('images/secmsservicesrvices',$thumb_image));
+            //$service->thumbnail = $thumb_image;
+        }
+        $service->save();
         //--- Logic Section Ends
 
         //--- Redirect Section        
-        return redirect()->route('admin.cmsservices')->with('success',"cmsservices Updated Successfully");
+        return redirect()->route('admin.cmsservices')->with('success', "service Updated Successfully");
     }
 
     /**
@@ -119,9 +149,10 @@ class CMSServicesController extends Controller
      */
     public function destroy($id)
     {
-        $cmsservice = CMSService::findOrFail($id);
-      
-        $cmsservice->delete();
-        return redirect()->route('admin.cmsservices')->with('error','cmsservices Deleted Successfully');
+        $service = CMSService::findOrFail($id);
+        @unlink(public_path('assets/images/cmsservices/' . $service->image));
+        // @unlink(public_path('assets/images/cmsservices'.$service->thumbnail));
+        $service->delete();
+        return redirect()->route('admin.cmsservices')->with('error', 'service Deleted Successfully');
     }
 }

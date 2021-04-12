@@ -87,6 +87,12 @@
                               </a>
                          </li>
                          <li class="nav-item">
+                              <a href="{{ route('admin.ourserviceSection') }}" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Our Service Section</p>
+                              </a>
+                         </li>
+                         <li class="nav-item">
                               <a href="{{ route('admin.cmsservices') }}" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Services</p>
@@ -108,7 +114,7 @@
                          </a>
                     </li>
                </ul>
-               <a href="#" class="dropdown-item">
+               <a href="{{ route('user.profile') }}" class="dropdown-item">
                     <i class="far fa-id-badge mr-2"></i> Profile
                </a>
                <div class="dropdown-divider"></div>

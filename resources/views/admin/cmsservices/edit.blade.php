@@ -29,30 +29,35 @@ CMS Services Edit
                <div class="col-12">
                     <div class="card card-primary">
                          <div class="card-header">
-                              <h3 class="card-title">Update CMS Services</h3>
+                              <h3 class="card-title">Update CMS Service</h3>
                          </div>
                          @include('admin.layouts.formerror')
-                         <form role="form" action="{{ route('admin.cmsservice.update',['id' => $cmsservice->id])  }}" method="post"
+                         <form role="form" action="{{ route('admin.cmsservice.update',['id' => $service->id])  }}" method="post"
                               enctype="multipart/form-data">
                               @csrf
                               <div class="form-group">
                                    <label for="order">Order:</label>
-                                   <input type="text" id="order" name="order" class="form-control" value="{{ $slider->order }}">
+                                   <input type="text" id="order" name="order" class="form-control" value="{{ $service->order }}">
+                              </div>
+                              <div class="form-group">
+                                   <label for="icon">Icon:</label>
+                                   <input type="text" id="icon" name="icon" placeholder="service icon"
+                                        class="form-control" value="{{ $service->icon }}">
                               </div>
                               <div class="form-group">
                                    <label for="title">Title:</label>
-                                   <input type="text" id="title" name="title" placeholder="Slider Title"
-                                        class="form-control" value="{{ $slider->title }}">
+                                   <input type="text" id="title" name="title" required placeholder="service Title"
+                                        class="form-control" value="{{ $service->title }}">
                               </div>
                               <div class="form-group">
                                    <label for="description">Description:</label>
-                                   <textarea name="description" id="summernote" rows="5" class="form-control">
-                                   {{ $slider->description }}</textarea>
+                                   <textarea name="description" id="summernote" required rows="5" class="form-control">
+                                   {{ $service->description }}</textarea>
                               </div>
                               <div class="form-group">
                                    <label for="image">Image:</label>
                                    <input type="file" name="image" class="form-control">
-                                   <img src="{{ asset('assets/images/sliders/' . $slider->image) }}" alt="{{ $slider->title }}" style="width: 150px; height:auto;">
+                                   <img src="{{ asset('assets/images/cmsservices/' . $service->image) }}" alt="{{ $service->title }}" style="width: 150px; height:auto;">
                               </div>
                               <button type="submit" class="btn btn-success">Update</button>
                          </form>

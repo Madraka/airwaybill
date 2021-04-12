@@ -9,7 +9,7 @@
      <title>@yield('title')</title>
      <link rel="icon" type="image/png" href="{{ asset('/assets/images/settings/'. $sitesetting->favicon) }}"/>
      <!-- Font Awesome Icons -->
-     <link rel="stylesheet" href="{{ asset('assets/admin') }}/plugins/fontawesome-free/css/all.min.css">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
      <!-- overlayScrollbars -->
      <link rel="stylesheet" href="{{ asset('assets/admin') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
      <!-- Theme style -->
@@ -143,7 +143,7 @@
      function getAwb(id) {
         $.ajax({
            type:'GET',
-           url:'/admin/awb/'+id,
+           url:'/atlas/admin/awb/'+id,
            success:function(data) {
                $('input[name="awb_no"]').val(data)  
            }
@@ -154,7 +154,7 @@
        function getref(cusId){
           $.ajax({
            type:'GET',
-           url:'/admin/cus_ref/'+cusId,
+           url:'/atlas/admin/cus_ref/'+cusId,
            success:function(data) {
                $('input[name="customer_reference"]').val(data) 
            }
