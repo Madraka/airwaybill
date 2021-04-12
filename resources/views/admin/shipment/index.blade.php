@@ -77,9 +77,9 @@
                   <td>{{ $shipment->declared_value_for_custom }}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-primary">Edit</button>
-                      <button type="button" class="btn btn-danger">Delete</button>
-                      <button type="button" class="btn btn-success">Print</button>
+                      <a href="{{ route('shipment.edit',['id' => $shipment->id]) }}" class="btn btn-primary" >Edit</a>
+                      <a href="{{ route('shipment.destroy',['id' => $shipment->id]) }}" class="btn btn-danger" >Delete</a>
+                      <a href="#" class="btn btn-success" >Print</a>
                     </div>
                   </td>
                 </tr>

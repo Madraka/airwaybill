@@ -23,6 +23,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/shipment/edit/{id}', 'Admin\ShipmentsController@edit')->name('shipment.edit');
     Route::post('/shipment/update/{id}', 'Admin\ShipmentsController@update')->name('shipment.update');
     Route::get('/shipment/delete/{id}', 'Admin\ShipmentsController@destroy')->name('shipment.destroy');
+    Route::get('/admin/awb/{id}', 'Admin\ShipmentsController@awb')->name('shipment.awb');
+    Route::get('/admin/cus_ref/{id}', 'Admin\ShipmentsController@cusref')->name('shipment.cusref');
     // Manifests
     Route::get('/manifests', 'Admin\ManifestsController@index')->name('manifests');
     Route::get('/manifest/create', 'Admin\ManifestsController@create')->name('manifest.create');
