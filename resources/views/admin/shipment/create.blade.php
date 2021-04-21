@@ -337,3 +337,29 @@
     <!-- /.content -->
 
 @endsection
+@section('script')
+<script>
+    var service_id = $('input[name="service_id"]:checked').val();
+    getAwb(service_id)
+    function getAwb(id) {
+       $.ajax({
+          type:'GET',
+          url:'/admin/awb/'+id,
+          success:function(data) {
+              $('input[name="awb_no"]').val(data)  
+          }
+       });
+    }
+ </script>
+ <script>
+      function getref(cusId){
+         $.ajax({
+          type:'GET',
+          url:'/admin/cus_ref/'+cusId,
+          success:function(data) {
+              $('input[name="customer_reference"]').val(data) 
+          }
+       });
+      }
+ </script>
+@endsection

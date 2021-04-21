@@ -9,7 +9,7 @@
      <title>@yield('title')</title>
      <link rel="icon" type="image/png" href="{{ asset('/assets/images/settings/'. $sitesetting->favicon) }}"/>
      <!-- Font Awesome Icons -->
-     <link rel="stylesheet" href="{{ asset('assets/admin') }}/plugins/fontawesome-free/css/all.min.css">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
      <!-- overlayScrollbars -->
      <link rel="stylesheet" href="{{ asset('assets/admin') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
      <!-- Theme style -->
@@ -18,11 +18,12 @@
      <!-- Google Font: Source Sans Pro -->
      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
      <!-- Other package css -->
-     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
      <!-- custom css -->
      <link rel="stylesheet" href="{{ asset('assets/admin') }}/dist/css/admin.css">
      <link rel="stylesheet" href="{{ asset('css/print.min.css') }}">
+     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
      <style>
           .w-90{
                width:90% !important;
@@ -66,7 +67,6 @@
      <!-- Bootstrap -->
      <script src="{{ asset('assets/admin') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-     <script src="/js/app.js"></script>
      <!-- overlayScrollbars -->
      <script src="{{ asset('assets/admin') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
      <!-- AdminLTE App -->
@@ -89,19 +89,15 @@
      <script src="{{ asset('assets/admin') }}/dist/js/pages/dashboard2.js"></script>
 
      <!-- Other plugins -->
-     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+   
      <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
      <script>
      $(document).ready(function() {
           $('#datatable').DataTable();
      });
      </script>
-     <script>
-     $(document).ready(function() {
-          $('#summernote').summernote();
-          $('#summernote2').summernote();
-     });
-     </script>
+    
      <script>
      // Display a success toast, with a title
      @if(Session::has('success'))    
@@ -134,33 +130,6 @@
           })
           });
         </script>
-
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-</script>
-<script>
-     var service_id = $('input[name="service_id"]:checked').val();
-     getAwb(service_id)
-     function getAwb(id) {
-        $.ajax({
-           type:'GET',
-           url:'/admin/awb/'+id,
-           success:function(data) {
-               $('input[name="awb_no"]').val(data)  
-           }
-        });
-     }
-  </script>
-  <script>
-       function getref(cusId){
-          $.ajax({
-           type:'GET',
-           url:'/admin/cus_ref/'+cusId,
-           success:function(data) {
-               $('input[name="customer_reference"]').val(data) 
-           }
-        });
-       }
-  </script>
   <script src = "{{asset('js/print.min.js')}}">
   </script>
   <script>
@@ -170,6 +139,14 @@
                })
        }
   </script>
+       <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+   <script>
+     
+          $('#summernote').summernote();
+          $('#summernote2').summernote();
+    
+     </script>
+@yield('script')
 </body>
 
 </html>

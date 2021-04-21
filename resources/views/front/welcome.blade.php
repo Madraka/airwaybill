@@ -32,6 +32,7 @@
     <section>
         <div class="jumbotron jumbotron-fluid">
             <div class="container-fluid">
+              @if($welcomesection)
                 <h2 class="jumbotron-head text-center text-uppercase">{{ $welcomesection->title }}</h2>
 
                 <div class="row">
@@ -40,12 +41,13 @@
                     </div>
                    
                 </div>
+                @endif
             </div>
         </div>
     </section>
     <section class="do-more py-4">
         <div class="container-fluid">
-            <div class="card">
+            <div class="card" style="background-image : url('{{ asset('images/air-cargo-1.jpg') }}');background-size:cover;background-position: bottom;">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -95,4 +97,86 @@
             </div>
         </div>
     </section>
+    <!-- Our Service Section -->
+    <section class="services-section" id="ourservices">
+      <div class="text-center">
+        @if($welcomesection)
+        <h3 class="display-4 services-title">{{ $ourservicesection->title }}</h3>
+        <div class="container">
+          {!! $ourservicesection->description !!}
+        </div>
+     @endif
+      </div>
+      
+    </section>
+    <section class="px-5 pt-5 pb-3 services-main mx-5">
+      <div class="text-center">
+        <div class="my-0 my-sm-5 py-5 py-sm-5 services-space">
+
+          <div class="row justify-content-around">
+           
+@if($cmsservices)
+@foreach($cmsservices as $ourservice)
+<div class="card services-card card-twist">
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="{{ $ourservice->icon }} mb-4"></i>
+                   
+                    <h6 class="card-subtitle mb-2">{{ $ourservice->title }}</h6>
+                  </div>
+                  <?php $string = mb_strimwidth($ourservice->description, 0, 100, '...'); //optional characters for end?>
+                  <p class="services-text">{{ $string }}</p>
+                  <a href="{{ route('front.ourservices',['slug' => $ourservice->slug]) }}" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+              @endforeach
+              @endif
+           
+  
+        
+  
+          </div>
+  
+          {{-- <div class="row justify-content-around second-section-row">
+            <div class="card services-card card-twist">
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="fal fa-2x fa-mail-bulk mb-4"></i>
+                    <h6 class="card-subtitle mb-2">Perishable Cargo Management</h6>
+                  </div>
+                  <p class="services-text">We recognize the demand of quality services by market and consumers in all areas, including...</p>
+                  <a href="#" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="card services-card card-twist">
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="fal fa-2x fa-file-signature mb-4"></i>
+                    <h6 class="card-subtitle mb-2">Legal Counseling & Documentation</h6>
+                  </div>
+                  <p class="services-text">A proper process ensures desired result on time and if that process is legal than...</p>
+                  <a href="#" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+          </div> --}}
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End of Our Service Section -->
 @endsection

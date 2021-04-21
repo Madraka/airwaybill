@@ -133,10 +133,11 @@ class ShipmentsController extends Controller
      */
     public function edit($id)
     {
-        $shipment = Shipment::finfOrFail($id);
+        $shipment = Shipment::findOrFail($id);
         $services = Service::orderBy('id','desc')->get();
         $countries = Country::orderBy('name','asc')->get();
-        return view('admin.shipment.edit',compact('shipment','services','countries'));
+        $customers = User::with('customer')->where('role_id',3)->get();
+        return view('admin.shipment.edit',compact('shipment','services','countries','customers'));
     }
 
     /**
@@ -174,7 +175,7 @@ class ShipmentsController extends Controller
             'grams' => 'required',
         ]);
 
-        $shipment = Shipment::finfOrFail($id);
+        $shipment = Shipment::findOrFail($id);
         $shipment->account_number = $request->account_number;
         $shipment->awb_no = $request->awb_no;
         $shipment->customer_reference = $request->customer_reference;
@@ -215,11 +216,21 @@ class ShipmentsController extends Controller
      */
     public function destroy($id)
     {
-        $shipment = Shipment::finfOrFail($id);
+        $shipment = Shipment::findOrFail($id);
         foreach ($shipment->dimensions as $dimension) {
             $dimension->forceDelete();
         }
         $shipment->delete();
         return redirect()->route('shipments')->with('error', 'Shipment Deleted Successfully');
     }
+    public function awb($id)
+    {
+     
+    }
+    public function cusref($id)
+    {
+      
+    }
+
+
 }

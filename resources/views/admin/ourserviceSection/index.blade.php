@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-CMS Services
+Our Service Section
 @endsection
 @section('content')
 <!-- Content Header (Page header) -->
@@ -8,12 +8,12 @@ CMS Services
      <div class="container-fluid">
           <div class="row mb-2">
                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">CMS Services</h1>
+                    <h1 class="m-0 text-dark">Our Service Section</h1>
                </div><!-- /.col -->
                <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                         <li class="breadcrumb-item active">CMS Services</li>
+                         <li class="breadcrumb-item active">Our Service Section</li>
                     </ol>
                </div><!-- /.col -->
           </div><!-- /.row -->
@@ -28,39 +28,32 @@ CMS Services
                <div class="col-12">
                     <div class="card card-primary">
                          <div class="card-header">
-                              <h3 class="card-title">CMS Services</h3>
-                              <a class="float-right btn btn-success" href="{{route('admin.cmsservice.create')}}">Create</a>
+                              <h3 class="card-title">Our Service Section</h3>
+                              <a class="float-right btn btn-success" href="{{route('admin.ourserviceSection.create')}}">Create</a>
                          </div>
                          <div class="card-body">
                               <table class="table table-hover" id="datatable">
                                    <thead>
                                         <tr>
                                              <th>SN</th>
-                                             <th>Order</th>
-                                             <th>Icon</th>
+                                          
                                              <th>Title</th>
-                                             <th>Image</th>
+                                            
                                              <th>Description</th>
                                              <th>Action</th>
                                         </tr>
                                    </thead>
                                    <tbody>
-                                   @foreach($services as $service)
+                                   @foreach($data as $newdata)
                                         <tr>
                                              <td>{{$loop->iteration}}</td>
-                                             <td>{{ $service->order }}</td>
-<<<<<<< HEAD
-=======
-                                             <td><i class="{{ $service->icon }}"></i></td>
->>>>>>> 822ee076bca64d8e30d558f829e399fa65984dc6
-                                             <td>{{ $service->title }}</td>
+                                            
+                                             <td>{{ $newdata->title }}</td>
+                                             
+                                             <td>{!! $newdata->description !!}</td>
                                              <td>
-                                             <img src="{{ asset('assets/images/cmsservices/' . $service->image) }}" alt="{{ $service->title }}" style="width: 150px; height:auto;">
-                                             </td>
-                                             <td>{!! $service->description !!}</td>
-                                             <td>
-                                                  <a class="btn btn-sm btn-info" href="{{ route('admin.cmsservice.edit',['id' => $service->id]) }}">Edit</a>
-                                                  <a class="btn btn-sm btn-danger" href="{{ route('admin.cmsservice.destroy',['id' => $service->id]) }}">Delete</a>
+                                                  <a class="btn btn-sm btn-info" href="{{ route('admin.ourserviceSection.edit',['id' => $newdata->id]) }}">Edit</a>
+                                                  <a class="btn btn-sm btn-danger" href="{{ route('admin.ourserviceSection.destroy',['id' => $newdata->id]) }}">Delete</a>
                                              </td>
                                         </tr>
                                    @endforeach

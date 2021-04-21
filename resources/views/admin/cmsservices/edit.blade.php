@@ -38,15 +38,31 @@ CMS Services Edit
                               <div class="form-group">
                                    <label for="order">Order:</label>
                                    <input type="text" id="order" name="order" class="form-control" value="{{ $service->order }}">
+<<<<<<< HEAD
                               </div>
                               <div class="form-group">
                                    <label for="title">Title:</label>
                                    <input type="text" id="title" name="title" placeholder="service Title"
+=======
+                              </div>
+                              <div class="form-group">
+                                   <label for="icon">Icon:</label>
+                                   <input type="text" id="icon" name="icon" placeholder="service icon"
+                                        class="form-control" value="{{ $service->icon }}">
+                              </div>
+                              <div class="form-group">
+                                   <label for="title">Title:</label>
+                                   <input type="text" id="title" name="title" required placeholder="service Title"
+>>>>>>> 822ee076bca64d8e30d558f829e399fa65984dc6
                                         class="form-control" value="{{ $service->title }}">
                               </div>
                               <div class="form-group">
                                    <label for="description">Description:</label>
+<<<<<<< HEAD
                                    <textarea name="description" id="summernote" rows="5" class="form-control">
+=======
+                                   <textarea name="description" id="summernote" required rows="5" class="form-control">
+>>>>>>> 822ee076bca64d8e30d558f829e399fa65984dc6
                                    {{ $service->description }}</textarea>
                               </div>
                               <div class="form-group">

@@ -87,6 +87,12 @@
                               </a>
                          </li>
                          <li class="nav-item">
+                              <a href="{{ route('admin.ourserviceSection') }}" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Our Service Section</p>
+                              </a>
+                         </li>
+                         <li class="nav-item">
                               <a href="{{ route('admin.cmsservices') }}" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Services</p>

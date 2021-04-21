@@ -16,9 +16,17 @@ class CreateCMSServicesTable extends Migration
         Schema::create('c_m_s_services', function (Blueprint $table) {
             $table->id();
             $table->integer('order');
+<<<<<<< HEAD
             $table->string('title')->nullable();
             $table->string('image');
             $table->text('description')->nullable();
+=======
+            $table->string('icon')->nullable();
+            $table->string('title');
+            $table->string('slug');
+            $table->string('image')->nullable();
+            $table->text('description');
+>>>>>>> 822ee076bca64d8e30d558f829e399fa65984dc6
             $table->timestamps();
         });
     }

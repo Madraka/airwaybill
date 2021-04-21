@@ -53,6 +53,10 @@ class CMSServicesController extends Controller
         //--- Logic Section
         $service = new CMSService();
         $service->order = $request->order;
+<<<<<<< HEAD
+=======
+        $service->icon = $request->icon;
+>>>>>>> 822ee076bca64d8e30d558f829e399fa65984dc6
         $service->title = $request->title;
         $service->description = $request->description;
 
@@ -117,6 +121,10 @@ class CMSServicesController extends Controller
         //--- Logic Section
         $service = CMSService::findOrFail($id);
         $service->order = $request->order;
+<<<<<<< HEAD
+=======
+        $service->icon = $request->icon;
+>>>>>>> 822ee076bca64d8e30d558f829e399fa65984dc6
         $service->title = $request->title;
         $service->description = $request->description;
 

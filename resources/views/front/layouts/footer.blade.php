@@ -1,5 +1,5 @@
 
-  <footer class="foot" id="contact">
+  <footer class="foot" id="contact" style="background-color:#6C0C0D">
     <div class="text-light pt-5 pb-3">
       <div class="container pt-2">
         <div class="row">
@@ -9,9 +9,10 @@
               <p class="foot-text">{{ $sitesetting->company_address }}</p>
               <p class="foot-text">{{ $sitesetting->company_phone }}</p>
               <p class="foot-text">{{ $sitesetting->company_mobile }}</p>
+              <p class="foot-text">{{ $sitesetting->company_email }}</p>
               <div class="mt-3" style="color: rgb(170, 170, 170);">
-                <a class="foot-link" href="">Terms & Conditions</a> | 
-                <a class="foot-link" href="">Privacy Policy</a>
+                <a class="foot-link" href="{{ route('page',['slug'=>'terms-and-conditions']) }}">Terms & Conditions</a> | 
+                <a class="foot-link" href="{{ route('page',['slug'=>'privacy-policy']) }}">Privacy Policy</a>
               </div>
             </div>
             <div class="mt-4">
@@ -22,12 +23,9 @@
             <h3 class="foot-head">Our services</h3>
             <div>
             <ul>
-            	<li><a href="#">Shipping</a></li>
-                <li><a href="#">Tracking</a></li>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Tracking</a></li>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Tracking</a></li>
+            @foreach($cmsservices as $service)
+            	<li><a href="{{ route('front.ourservices',['slug' => $service->slug]) }}">{{ $service->title }}</a></li>
+            @endforeach
             </ul>
             </div>
           </div>
