@@ -108,7 +108,7 @@
                          </a>
                     </li>
                </ul>
-               <a href="#" class="dropdown-item">
+               <a href="{{ route('user.profile') }}" class="dropdown-item">
                     <i class="far fa-id-badge mr-2"></i> Profile
                </a>
                <div class="dropdown-divider"></div>

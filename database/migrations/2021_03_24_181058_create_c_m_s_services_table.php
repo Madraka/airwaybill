@@ -15,6 +15,10 @@ class CreateCMSServicesTable extends Migration
     {
         Schema::create('c_m_s_services', function (Blueprint $table) {
             $table->id();
+            $table->integer('order');
+            $table->string('title')->nullable();
+            $table->string('image');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
