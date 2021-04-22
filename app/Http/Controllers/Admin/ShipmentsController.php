@@ -132,7 +132,7 @@ class ShipmentsController extends Controller
     public function customAjaxChange($id)
     {
 
-        $customer = Customer::where('id', $id)->fir();
+        $customer = Customer::where('id', $id)->first();
         $data['customer_reference']=$customer->reference_no;
         return response()->json($data);
     }
