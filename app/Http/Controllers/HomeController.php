@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Page;
 
 class HomeController extends Controller
 {
@@ -19,5 +20,10 @@ class HomeController extends Controller
     public function services()
     {
         return view('front.services');
+    }
+    public function page($slug)
+    {
+    	$page = Page::where('slug',$slug)->first();
+        return view('front.page',compact('page'));
     }
 }

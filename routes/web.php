@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/shipment/edit/{id}', 'Admin\ShipmentsController@edit')->name('shipment.edit');
     Route::post('/shipment/update/{id}', 'Admin\ShipmentsController@update')->name('shipment.update');
     Route::get('/shipment/delete/{id}', 'Admin\ShipmentsController@destroy')->name('shipment.destroy');
+    Route::get('/shipment/customer/change/ajax/{id}', 'Admin\ShipmentsController@customAjaxChange')->name('shipment.customer.ajax.change');
     // Manifests
     Route::get('/manifests', 'Admin\ManifestsController@index')->name('manifests');
     Route::get('/manifest/create', 'Admin\ManifestsController@create')->name('manifest.create');
@@ -106,6 +107,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 // Frontend
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('/services', 'HomeController@services')->name('services');
+Route::get('/service', 'HomeController@services')->name('front.services');
+Route::get('/page/{slug}', 'HomeController@page')->name('page');
 Route::get('/emails', 'EmailsController@index')->name('emails');
 Route::post('/sendemail', 'EmailsController@send')->name('sendemail');

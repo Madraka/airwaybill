@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Awb;
 use App\Models\Country;
+use App\Models\Customer;
 use App\Models\Dimension;
 use Illuminate\Http\Request;
 use App\Models\Shipment;
@@ -19,8 +21,8 @@ class ShipmentsController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::orderBy('id','desc')->get();
-        return view('admin.shipment.index',compact('shipments'));
+        $shipments = Shipment::orderBy('id', 'desc')->get();
+        return view('admin.shipment.index', compact('shipments'));
     }
 
     /**
@@ -30,16 +32,18 @@ class ShipmentsController extends Controller
      */
     public function create()
     {
-        $services = Service::orderBy('id','desc')->get();
-        $countries = Country::orderBy('name','asc')->get();
-        $customers = User::with('customer')->where('role_id',3)->get();
-        return view('admin.shipment.create',compact('services','countries','customers'));
+        $services = Service::orderBy('id', 'desc')->get();
+        $countries = Country::orderBy('name', 'asc')->get();
+        $customers = User::with('customer')->where('role_id', 3)->get();
+        $awb_number = Awb::where('service_id', '1')->where('status', '1')->inRandomOrder()
+            ->first();
+        return view('admin.shipment.create', compact('services', 'countries', 'customers', 'awb_number'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -92,7 +96,7 @@ class ShipmentsController extends Controller
         $shipment->receiver_country = $request->receiver_country;
         $shipment->receiver_phone = $request->receiver_phone;
         $shipment->receiver_postcode = $request->receiver_postcode;
-        $shipment->goods_description = $request->goods_description;    
+        $shipment->goods_description = $request->goods_description;
         $shipment->declared_value_for_custom = $request->declared_value_for_custom;
         $shipment->pieces = $request->pieces;
         $shipment->kilograms = $request->kilograms;
@@ -102,22 +106,22 @@ class ShipmentsController extends Controller
         $heights = $request->height;
         $shipment->save();
         $shipmentId = $shipment->id;
-        for($i=0;$i<count($lengths);$i++){
+        for ($i = 0; $i < count($lengths); $i++) {
             Dimension::create([
-                'shipment_id' =>$shipmentId,
-                'length' =>$lengths[$i],
+                'shipment_id' => $shipmentId,
+                'length' => $lengths[$i],
                 'breadth' => $breadths[$i],
                 'height' => $heights[$i]
             ]);
         }
-        
+
         return redirect()->route('shipments')->with('success', "Shipment Added Successfully");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -125,25 +129,33 @@ class ShipmentsController extends Controller
         //
     }
 
+    public function customAjaxChange($id)
+    {
+
+        $customer = Customer::where('id', $id)->fir();
+        $data['customer_reference']=$customer->reference_no;
+        return response()->json($data);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $shipment = Shipment::finfOrFail($id);
-        $services = Service::orderBy('id','desc')->get();
-        $countries = Country::orderBy('name','asc')->get();
-        return view('admin.shipment.edit',compact('shipment','services','countries'));
+        $services = Service::orderBy('id', 'desc')->get();
+        $countries = Country::orderBy('name', 'asc')->get();
+        return view('admin.shipment.edit', compact('shipment', 'services', 'countries'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -174,7 +186,7 @@ class ShipmentsController extends Controller
             'grams' => 'required',
         ]);
 
-        $shipment = Shipment::finfOrFail($id);
+        $shipment = Shipment::findOrFail($id);
         $shipment->account_number = $request->account_number;
         $shipment->awb_no = $request->awb_no;
         $shipment->customer_reference = $request->customer_reference;
@@ -195,13 +207,13 @@ class ShipmentsController extends Controller
         $shipment->receiver_country = $request->receiver_country;
         $shipment->receiver_phone = $request->receiver_phone;
         $shipment->receiver_postcode = $request->receiver_postcode;
-        $shipment->goods_description = $request->goods_description;    
+        $shipment->goods_description = $request->goods_description;
         $shipment->declared_value_for_custom = $request->declared_value_for_custom;
         $shipment->pieces = $request->pieces;
         $shipment->kilograms = $request->kilograms;
         $shipment->grams = $request->grams;
 
-      
+
         $shipment->save();
 
         return redirect()->route('shipments')->with('success', "Shipment Updated Successfully");
@@ -210,7 +222,7 @@ class ShipmentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

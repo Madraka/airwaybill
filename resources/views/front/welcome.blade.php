@@ -45,7 +45,7 @@
     </section>
     <section class="do-more py-4">
         <div class="container-fluid">
-            <div class="card">
+            <div class="card" style="background-image : url('{{ asset('images/air-cargo-1.jpg') }}');background-size:cover;background-position: bottom;">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -95,4 +95,104 @@
             </div>
         </div>
     </section>
+    <!-- Our Service Section -->
+    <section class="services-section">
+      <div class="text-center">
+        <h3 class="display-4 services-title">Our Services</h3>
+        <p class="container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima facilis quia id, architecto odit autem consequuntur sequi natus perspiciatis quisquam enim voluptatum, modi tempora maiores blanditiis provident fuga aliquid dolores hic officiis optio?</p>
+      </div>
+      
+    </section>
+    <section class="px-5 pt-5 pb-3 services-main mx-5">
+      <div class="text-center">
+        <div class="my-0 my-sm-5 py-5 py-sm-5 services-space">
+
+          <div class="row justify-content-around">
+            <div class="card services-card card-twist">
+
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="fal fa-2x fa-chart-network mb-4"></i>
+                    <h6 class="card-subtitle mb-2">GSA / CSA & Brand Representation</h6>
+                  </div>
+                  <p class="services-text">Air Logistics Group provides network with vast experience, flexibility, reliability and the highest standard of...</p>
+                  <a href="#" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+              
+            </div>
+  
+            <div class="card services-card card-twist">
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="fal fa-2x fa-route mb-4"></i>
+                    <h6 class="card-subtitle mb-2">One-stop Logistic Solution</h6>
+                  </div>
+                  <p class="services-text">Logistic management is not only bringing goods from point A to the point B, it...</p>
+                  <a href="#" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="card services-card card-twist">
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="fal fa-2x fa-box-full mb-4"></i>
+                    <h6 class="card-subtitle mb-2">Project Cargo Handling</h6>
+                  </div>
+                  <p class="services-text">Every project, regardless of its area of operation or focus of operation, has very specific...</p>
+                  <a href="#" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="row justify-content-around second-section-row">
+            <div class="card services-card card-twist">
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="fal fa-2x fa-mail-bulk mb-4"></i>
+                    <h6 class="card-subtitle mb-2">Perishable Cargo Management</h6>
+                  </div>
+                  <p class="services-text">We recognize the demand of quality services by market and consumers in all areas, including...</p>
+                  <a href="#" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="card services-card card-twist">
+              <div class="card-body center">
+                <div class="text-twist">
+                  <div class="services-card-color">
+                    <i class="fal fa-2x fa-file-signature mb-4"></i>
+                    <h6 class="card-subtitle mb-2">Legal Counseling & Documentation</h6>
+                  </div>
+                  <p class="services-text">A proper process ensures desired result on time and if that process is legal than...</p>
+                  <a href="#" class="services-card-color">
+                    <i class="fal fa-2x fa-chevron-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End of Our Service Section -->
 @endsection

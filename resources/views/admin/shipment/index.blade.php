@@ -30,6 +30,7 @@
             <a type="button" class="btn  btn-success float-sm-right" href="{{ route('shipment.create') }}"> Add Shipment</a>
           </div>
           <div class="card-body">
+
             <table id="example1" class="table table-hover dataTable no-footer">
               <thead>
                 <tr>

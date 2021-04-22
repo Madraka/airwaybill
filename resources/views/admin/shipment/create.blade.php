@@ -1,25 +1,29 @@
 @extends('admin.layouts.app')
 @section('title', 'Add Shipments')
 @section('style')
-<style>
-    .card-body{
-        padding:10px;
-        font-size: 14px;
-    }
-    .card-title{
-        font-size:15px;
-        font-weight: 500;
-    }
-    .card-header{
-        padding:7px;
-    }
-    .w-58{
-        width:58%;
-    }
-    .form-group label{
-        font-weight: 400 !important;
-    }
-</style>
+    <style>
+        .card-body {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .card-header {
+            padding: 7px;
+        }
+
+        .w-58 {
+            width: 58%;
+        }
+
+        .form-group label {
+            font-weight: 400 !important;
+        }
+    </style>
 @endsection
 @section('content')
     <!-- Content Header (Page header) -->
@@ -50,7 +54,7 @@
                         <h3 class="card-title">Add Shipment</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fas fa-minus"></i></button>
+                                        class="fas fa-minus"></i></button>
                         </div>
                     </div>
 
@@ -60,17 +64,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="account_number">Select Customer</label>
-                                    <select name="customer_id" class="form-control select2" style="width: 100%;" onchange="getref(value)">
+                                    <select name="customer_id" id="customer_id" class="form-control select2"
+                                            style="width: 100%;" {{--onchange="getref(value)"--}}>
                                         <option value="">--Choose Customer--</option>
                                         @foreach($customers as $customer)
-                                        <option value="{{$customer->customer->id}}">{{$customer->name}}</option>
-                                        @endforeach   
+                                            <option value="{{$customer->customer->id}}">{{$customer->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Customer Reference:</label>
                                     <input class="form-control" type="text" name="customer_reference"
-                                        id="customer_reference" placeholder="Customer Reference" readonly="readonly" value="">
+                                           id="customer_reference" placeholder="Customer Reference" readonly="readonly"
+                                           >
                                 </div>
                                 <!-- /.form-group -->
 
@@ -78,7 +84,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="awb_no">AWB No.</label>
-                                    <input class="form-control w-58" name="awb_no" type="text" value="">
+                                    <input class="form-control w-58" name="awb_no" type="text"
+                                           value={{$awb_number->awb_number}} readonly>
                                 </div>
                                 <div class="form-group clearfix">
                                     <div class="row">
@@ -86,7 +93,8 @@
                                             <div class="col-md-4">
                                                 <div class="icheck-primary d-inline">
                                                     <input id="service_id" type="radio" name="service_id"
-                                                        value="{{ $service->id }}" onchange="getAwb({{ $service->id }})" @if (!$key) {!! "checked" !!} @endif>
+                                                           value="{{ $service->id }}"
+                                                           onchange="getAwb({{ $service->id }})" @if (!$key) {!! "checked" !!} @endif>
                                                     <label for="service_id">{{ $service->name }}</label>
                                                 </div>
                                             </div>
@@ -107,7 +115,7 @@
                                 <h3 class="card-title"><i class="fas fa-plus"></i>FROM Shippers</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                            class="fas fa-minus"></i></button>
+                                                class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -116,23 +124,24 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="shipper_name">Name:</label>
-                                            <input class="form-control w-90" type="text" name="shipper_name" id="shipper_name">
+                                            <input class="form-control w-90" type="text" name="shipper_name"
+                                                   id="shipper_name">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_address">Address:</label>
                                             <input class="form-control w-90" type="text" name="shipper_address"
-                                                id="shipper_address">
+                                                   id="shipper_address">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_phone">Phone:</label>
                                             <input class="form-control w-90" type="text" name="shipper_phone"
-                                                id="shipper_phone">
+                                                   id="shipper_phone">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="shipper_country">Country</label>
                                             <select name="shipper_country" class="form-control select2 w-90"
-                                                style="width: 100%;">
+                                                    style="width: 100%;">
                                                 <option>--Choose Country--</option>
                                                 @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -146,20 +155,22 @@
                                         <div class="form-group">
                                             <label for="shipper_contact_person">Contact Person Name:</label>
                                             <input class="form-control w-90" type="text" name="shipper_contact_person"
-                                                id="shipper_contact_person">
+                                                   id="shipper_contact_person">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_city">City:</label>
-                                            <input class="form-control w-90" type="text" name="shipper_city" id="shipper_city">
+                                            <input class="form-control w-90" type="text" name="shipper_city"
+                                                   id="shipper_city">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_state">State/Provinence:</label>
-                                            <input class="form-control w-90" type="text" name="shipper_state" id="shipper_state">
+                                            <input class="form-control w-90" type="text" name="shipper_state"
+                                                   id="shipper_state">
                                         </div>
                                         <div class="form-group">
                                             <label for="shipper_postcode">Post/Zipcode:</label>
                                             <input class="form-control w-90" type="text" name="shipper_postcode"
-                                                id="shipper_postcode">
+                                                   id="shipper_postcode">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -174,7 +185,7 @@
                                 <h3 class="card-title"><i class="fas fa-plus"></i> TO Receiver</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                            class="fas fa-minus"></i></button>
+                                                class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -183,23 +194,24 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="receiver_name">Name:</label>
-                                            <input class="form-control w-90" type="text" name="receiver_name" id="receiver_name">
+                                            <input class="form-control w-90" type="text" name="receiver_name"
+                                                   id="receiver_name">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_address">Address:</label>
                                             <input class="form-control w-90" type="text" name="receiver_address"
-                                                id="receiver_address">
+                                                   id="receiver_address">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_phone">Phone:</label>
                                             <input class="form-control w-90" type="text" name="receiver_phone"
-                                                id="receiver_phone">
+                                                   id="receiver_phone">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="receiver_country">Country</label>
                                             <select name="receiver_country" class="form-control select2 w-90"
-                                                style="width: 100%;">
+                                                    style="width: 100%;">
                                                 <option>--Choose Country--</option>
                                                 @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -213,21 +225,22 @@
                                         <div class="form-group">
                                             <label for="receiver_contact_person">Contact Person Name:</label>
                                             <input class="form-control w-90" type="text" name="receiver_contact_person"
-                                                id="receiver_contact_person">
+                                                   id="receiver_contact_person">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_city">City:</label>
-                                            <input class="form-control w-90" type="text" name="receiver_city" id="receiver_city">
+                                            <input class="form-control w-90" type="text" name="receiver_city"
+                                                   id="receiver_city">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_state">State/Provinence:</label>
                                             <input class="form-control w-90" type="text" name="receiver_state"
-                                                id="receiver_state">
+                                                   id="receiver_state">
                                         </div>
                                         <div class="form-group">
                                             <label for="receiver_postcode">Post/Zipcode:</label>
                                             <input class="form-control w-90" type="text" name="receiver_postcode"
-                                                id="receiver_postcode">
+                                                   id="receiver_postcode">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -244,11 +257,12 @@
                                 <h3 class="card-title">Description Of Goods</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                            class="fas fa-minus"></i></button>
+                                                class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <textarea class="form-control w-90" rows="5" type="text" name="goods_description" id="goods_description"></textarea>
+                                <textarea class="form-control w-90" rows="5" type="text" name="goods_description"
+                                          id="goods_description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -258,13 +272,13 @@
                                 <h3 class="card-title">DECLARED VALUE FOR CUSTOM</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                            class="fas fa-minus"></i></button>
+                                                class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <p>
                                     <input name="declared_value_for_custom" class="form-control w-90" type="text"
-                                        placeholder="USD. 956.00">
+                                           placeholder="USD. 956.00">
                                 </p>
                             </div>
                         </div>
@@ -276,22 +290,22 @@
                         <h3 class="card-title">Size & Weight</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fas fa-minus"></i></button>
+                                        class="fas fa-minus"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
                         <table class="table dataTable table-bordered">
                             <tbody>
-                                <tr>
-                                    <td>No. Of Pieces</td>
-                                    <td>Kilograms</td>
-                                    <td>Grams</td>
-                                </tr>
-                                <tr>
-                                    <td><input name="pieces" class="form-control w-90" type="number" /></td>
-                                    <td><input name="kilograms" class="form-control w-90" type="number" /></td>
-                                    <td><input name="grams" class="form-control w-90" type="number" /></td>
-                                </tr>
+                            <tr>
+                                <td>No. Of Pieces</td>
+                                <td>Kilograms</td>
+                                <td>Grams</td>
+                            </tr>
+                            <tr>
+                                <td><input name="pieces" class="form-control w-90" type="number"/></td>
+                                <td><input name="kilograms" class="form-control w-90" type="number"/></td>
+                                <td><input name="grams" class="form-control w-90" type="number"/></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -301,24 +315,25 @@
                         <h3 class="card-title">Dimension</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fas fa-minus"></i></button>
+                                        class="fas fa-minus"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table dataTable table-bordered" id="myTable">
+                        <table class="table dataTable table-bordered" id="dimension_table">
                             <tbody>
-                                <tr>
-                                    <td>SN</td>
-                                    <td>Length</td>
-                                    <td>Breadth</td>
-                                    <td>Height</td>
-                                </tr>
-                                {{-- <tr>
-                                    <td><input name="pieces" class="form-control" type="number" /></td>
-                                    <td><input name="length[]" class="form-control" type="number" /></td>
-                                    <td><input name="weight" class="form-control" type="number" /></td>
-                                    <td><input name="height" class="form-control" type="number" /></td>
-                                </tr> --}}
+                            <tr>
+                                <td>SN</td>
+                                <td>Length</td>
+                                <td>Breadth</td>
+                                <td>Height</td>
+                                <td>Action</td>
+                            </tr>
+                            {{-- <tr>
+                                <td><input name="pieces" class="form-control" type="number" /></td>
+                                <td><input name="length[]" class="form-control" type="number" /></td>
+                                <td><input name="weight" class="form-control" type="number" /></td>
+                                <td><input name="height" class="form-control" type="number" /></td>
+                            </tr> --}}
                             </tbody>
                         </table>
                         <button id="add-row" type="button">Add row</button>
@@ -335,5 +350,31 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#customer_id').change(function (e) {
+                e.preventDefault();
+                var id = $('#customer_id').val();
+                var token = $(this).data("token");
+                $.ajax(
+                    {
+                        url: "{!!URL::to('admin/shipment/customer/change/ajax/')!!}/" + id,
+                        type: 'GET',
+                        dataType: "JSON",
+                        data: {
+                            "id": id,
+                            "_method": 'GET',
+                            "_token": token
+                        },
+                        success: function (data) {
+                            $("#customer_reference").val(data.reference_no);
+                        }
+                    });
+
+            });
+        });
+    </script>
 
 @endsection

@@ -44,18 +44,18 @@ CMS Services
                                         </tr>
                                    </thead>
                                    <tbody>
-                                   @foreach($cmsservices as $cmsservice)
+                                   @foreach($services as $service)
                                         <tr>
                                              <td>{{$loop->iteration}}</td>
-                                             <td>{{ $slider->order }}</td>
-                                             <td>{{ $slider->title }}</td>
+                                             <td>{{ $service->order }}</td>
+                                             <td>{{ $service->title }}</td>
                                              <td>
-                                             <img src="{{ asset('assets/images/sliders/' . $slider->image) }}" alt="{{ $slider->title }}" style="width: 150px; height:auto;">
+                                             <img src="{{ asset('assets/images/cmsservices/' . $service->image) }}" alt="{{ $service->title }}" style="width: 150px; height:auto;">
                                              </td>
-                                             <td>{!! $slider->description !!}</td>
+                                             <td>{!! $service->description !!}</td>
                                              <td>
-                                                  <a class="btn btn-sm btn-info" href="{{ route('admin.cmsservices.edit',['id' => $cmsservice->id]) }}">Edit</a>
-                                                  <a class="btn btn-sm btn-danger" href="{{ route('admin.cmsservices.destroy',['id' => $cmsservice->id]) }}">Delete</a>
+                                                  <a class="btn btn-sm btn-info" href="{{ route('admin.cmsservice.edit',['id' => $service->id]) }}">Edit</a>
+                                                  <a class="btn btn-sm btn-danger" href="{{ route('admin.cmsservice.destroy',['id' => $service->id]) }}">Delete</a>
                                              </td>
                                         </tr>
                                    @endforeach

@@ -116,24 +116,30 @@
            toastr.error("{{ Session::get('error') }}",'Error')  
      @endif
      </script>
-     <script>
-          var i =1;
-          $(document).ready(function() {
-              //Try to get tbody first with jquery children. works faster!
-          var tbody = $('#myTable').children('tbody');
-          
-          //Then if no tbody just select your table 
-          var table = tbody.length ? tbody : $('#myTable');
-          table.append('<tr><td>'+i+'</td><td><input class="form-control w-90" type="number" name="length[]"/></td><td><input class="form-control w-90" type="number" name="breadth[]"/></td><td><input class="form-control w-90" type="number" name="height[]"/></td></tr>');
-          
-          
-          $('#add-row').click(function(){
-          i = i+1;
-          //Add row
-          table.append('<tr><td>'+i+'</td><td><input class="form-control w-90" type="number" name="length[]"/></td><td><input class="form-control w-90" type="number" name="breadth[]"/></td><td><input class="form-control w-90" type="number" name="height[]"/></td></tr>');
-          })
-          });
-        </script>
+     {{--<script>--}}
+          {{--var i =1;--}}
+          {{--$(document).ready(function() {--}}
+              {{--//Try to get tbody first with jquery children. works faster!--}}
+          {{--var tbody = $('#myTable').children('tbody');--}}
+
+          {{--//Then if no tbody just select your table--}}
+          {{--var table = tbody.length ? tbody : $('#myTable');--}}
+          {{--table.append('<tr><td>'+i+'</td><td><input class="form-control w-90" type="number" name="length[]"/></td><td><input class="form-control w-90" type="number" name="breadth[]"/></td><td><input class="form-control w-90" type="number" name="height[]"/></td></tr>');--}}
+
+
+          {{--$('#add-row').click(function(){--}}
+          {{--i = i+1;--}}
+          {{--//Add row--}}
+          {{--table.append('<tr><td>'+i+'</td><td><input class="form-control w-90" type="number" name="length[]"/></td><td><input class="form-control w-90" type="number" name="breadth[]"/></td><td><input class="form-control w-90" type="number" name="height[]"/></td><td>   <button id="delete-row" type="button">Delete row</button></td></tr>');--}}
+          {{--})--}}
+          {{--});--}}
+          {{--$("#delete-row").click(function(){--}}
+              {{--alert("working");--}}
+              {{--$("table tbody").find('input[name="length"]').each(function(){--}}
+                      {{--$(this).parents("tr").remove();--}}
+              {{--});--}}
+          {{--});--}}
+        {{--</script>--}}
 
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 </script>
@@ -143,7 +149,7 @@
      function getAwb(id) {
         $.ajax({
            type:'GET',
-           url:'/admin/awb/'+id,
+           url:'/atlas/admin/awb/'+id,
            success:function(data) {
                $('input[name="awb_no"]').val(data)  
            }
@@ -154,7 +160,7 @@
        function getref(cusId){
           $.ajax({
            type:'GET',
-           url:'/admin/cus_ref/'+cusId,
+           url:'/atlas/admin/cus_ref/'+cusId,
            success:function(data) {
                $('input[name="customer_reference"]').val(data) 
            }
