@@ -37,7 +37,7 @@ CMS Services Edit
                               @csrf
                               <div class="form-group">
                                    <label for="order">Order:</label>
-                                   <input type="text" id="order" name="order" class="form-control" value="{{ $service->order }}">
+                                   <input type="number" id="order" name="order" class="form-control" value="{{ $service->order }}">
                               </div>
                               <div class="form-group">
                                    <label for="title">Title:</label>

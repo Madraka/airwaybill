@@ -114,13 +114,19 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //--- Validation Section
-        $this->validate($request, [
-            'name'       => 'required',
-            'email' => 'required',
-            'role_id' => 'required',
-            'password' => 'required',
+        // $this->validate($request, [
+        //     'name'       => 'required',
+        //     'email' => 'required',
+        //     'role_id' => 'required',
+        //     'password' => 'required',
 
-        ]);
+        // ]);
+
+        $customer= User::findOrFail($id);
+        $customer->update(request()->all());
+
+        return redirect('admin/users')
+            ->with('success', "User Updated Successfully");
     }
 
     /**

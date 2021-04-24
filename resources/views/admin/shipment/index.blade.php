@@ -29,9 +29,9 @@
             <button onclick="print()" class="btn btn-warning ml-2 float-sm-right">Test Print</button>
             <a type="button" class="btn  btn-success float-sm-right" href="{{ route('shipment.create') }}"> Add Shipment</a>
           </div>
-          <div class="card-body">
+          <div id="printPage" class="card-body">
 
-            <table id="example1" class="table table-hover dataTable no-footer">
+            <table id="" class="table table-hover dataTable no-footer">
               <thead>
                 <tr>
                   <th>S.No</th>
@@ -78,9 +78,9 @@
                   <td>{{ $shipment->declared_value_for_custom }}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-primary">Edit</button>
-                      <button type="button" class="btn btn-danger">Delete</button>
-                      <button type="button" class="btn btn-success">Print</button>
+                      <a href="{{route('shipment.edit', ['id'=>$shipment->id])}}" type="button" class="btn btn-primary">Edit</a>
+                      <a href="{{route('shipment.destroy', ['id'=>$shipment->id])}}" type="button" class="btn btn-danger">Delete</a>
+                      <button onclick='printDiv()' class="btn btn-success">Print</a>
                     </div>
                   </td>
                 </tr>
@@ -100,3 +100,16 @@
 
 
 @endsection
+
+
+<script type="text/javascript">
+  function printDiv()
+  {
+    var value1= document.getElementById('printPage').innerHTML;
+    var value2= document.body.innerHTML;
+    document.body.innerHTML=value1;
+    window.print();
+    document.body.innerHTML= value2;
+  }
+
+</script>

@@ -75,8 +75,7 @@
                                 <div class="form-group">
                                     <label>Customer Reference:</label>
                                     <input class="form-control" type="text" name="customer_reference"
-                                           id="customer_reference" placeholder="Customer Reference" readonly="readonly"
-                                           >
+                                           placeholder="Customer Reference">
                                 </div>
                                 <!-- /.form-group -->
 
@@ -84,17 +83,17 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="awb_no">AWB No.</label>
-                                    <input class="form-control w-58" name="awb_no" type="text"
-                                           value={{$awb_number->awb_number}} readonly>
+                                    <input class="form-control w-58" name="awb_no" type="number"
+                                            >
                                 </div>
                                 <div class="form-group clearfix">
                                     <div class="row">
-                                        @foreach ($services as $key=>$service)
+                                        @foreach ($services as $service)
                                             <div class="col-md-4">
                                                 <div class="icheck-primary d-inline">
                                                     <input id="service_id" type="radio" name="service_id"
                                                            value="{{ $service->id }}"
-                                                           onchange="getAwb({{ $service->id }})" @if (!$key) {!! "checked" !!} @endif>
+                                                            @if (!$service) {!! "checked" !!} @endif>
                                                     <label for="service_id">{{ $service->name }}</label>
                                                 </div>
                                             </div>
@@ -277,7 +276,7 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <input name="declared_value_for_custom" class="form-control w-90" type="text"
+                                    <input name="declared_value_for_custom" class="form-control w-90" type="number"
                                            placeholder="USD. 956.00">
                                 </p>
                             </div>

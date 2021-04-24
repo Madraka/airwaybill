@@ -1,17 +1,17 @@
 @extends('admin.layouts.app')
-@section('title','Add Manifest')
+@section('title','Edit Manifest')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Add Manifest</h1>
+                <h1>Edit Manifest</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Manifest</a></li>
-                    <li class="breadcrumb-item active">Add Manifest</li>
+                    <li class="breadcrumb-item active">Edit Manifest</li>
                 </ol>
             </div>
         </div>
@@ -19,12 +19,13 @@
 </section>
 <!-- Main content -->
 <section class="content">
-    <form action="{{ route('manifest.store') }}" method="POST">
+    <form action="{{ route('manifest.update', ['id'=> $manifest->id ]) }}" method="POST">
         @csrf
+        @method('PUT')
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Add Mainfest</h3>
+                <h3 class="card-title">Edit Mainfest</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -39,7 +40,7 @@
                                     <label for="flight_no">Flight No:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input name="flight_no" class="form-control" type="text" required>
+                                    <input name="flight_no" value="{{$manifest->flight_no}}" class="form-control" type="text" required>
                                 </div>
                             </div>
                         </div>
@@ -73,10 +74,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($shipments as $shipment)
+                                        @foreach($manifest->shipments as $shipment)
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="shipments" value="{{$shipment->id}}">
+                                                <input type="checkbox" name="shipment" value="$shipment->id">
                                             </td>
                                             <td>{{$shipment->awb_no}}</td>
                                             <td>{{$shipment->shipper_name}}</td>
@@ -84,6 +85,7 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
+                                    
                                 </table>
                             </div>
                             <!-- /.col -->
@@ -93,7 +95,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-success float-sm-right" type="submit">Save</button>
+                        <button class="btn btn-success float-sm-right" type="submit">Edit</button>
                     </div>
                 </div>
             </div>

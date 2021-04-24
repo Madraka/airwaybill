@@ -40,7 +40,7 @@
                             <tbody>
                                 @foreach($countries as $country)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $country->code }}</td>
                                     <td>{{ $country->name }}</td>
                                     <td>

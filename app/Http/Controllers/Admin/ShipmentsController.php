@@ -50,8 +50,8 @@ class ShipmentsController extends Controller
     {
         $this->validate($request, [
             'customer_id' => 'required',
-            'awb_no' => 'required',
-            'customer_reference' => 'required',
+            // 'awb_no' => 'required',
+            // 'customer_reference' => 'required',
             'service_id' => 'required',
             'shipper_name' => 'required',
             'shipper_contact_person' => 'required',
@@ -106,14 +106,14 @@ class ShipmentsController extends Controller
         $heights = $request->height;
         $shipment->save();
         $shipmentId = $shipment->id;
-        for ($i = 0; $i < count($lengths); $i++) {
-            Dimension::create([
-                'shipment_id' => $shipmentId,
-                'length' => $lengths[$i],
-                'breadth' => $breadths[$i],
-                'height' => $heights[$i]
-            ]);
-        }
+        // for ($i = 0; $i < count($lengths); $i++) {
+        //     Dimension::create([
+        //         'shipment_id' => $shipmentId,
+        //         'length' => $lengths[$i],
+        //         'breadth' => $breadths[$i],
+        //         'height' => $heights[$i]
+        //     ]);
+        // }
 
         return redirect()->route('shipments')->with('success', "Shipment Added Successfully");
     }
@@ -145,10 +145,14 @@ class ShipmentsController extends Controller
      */
     public function edit($id)
     {
-        $shipment = Shipment::finfOrFail($id);
+        $shipment = Shipment::findOrFail($id);
+        
+        // $customers = Customer::findOrFail($id);
+        $customers = User::orderBy('name', 'desc')->get();
         $services = Service::orderBy('id', 'desc')->get();
         $countries = Country::orderBy('name', 'asc')->get();
-        return view('admin.shipment.edit', compact('shipment', 'services', 'countries'));
+
+        return view('admin.shipment.edit', compact('shipment','customers', 'services', 'countries'));
     }
 
     /**
@@ -161,7 +165,7 @@ class ShipmentsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'account_number' => 'required',
+            // 'account_number' => 'required',
             'awb_no' => 'required',
             'customer_reference' => 'required',
             'service_id' => 'required',
@@ -187,7 +191,7 @@ class ShipmentsController extends Controller
         ]);
 
         $shipment = Shipment::findOrFail($id);
-        $shipment->account_number = $request->account_number;
+        // $shipment->account_number = $request->account_number;
         $shipment->awb_no = $request->awb_no;
         $shipment->customer_reference = $request->customer_reference;
         $shipment->service_id = $request->service_id;
@@ -227,10 +231,10 @@ class ShipmentsController extends Controller
      */
     public function destroy($id)
     {
-        $shipment = Shipment::finfOrFail($id);
-        foreach ($shipment->dimensions as $dimension) {
-            $dimension->forceDelete();
-        }
+        $shipment = Shipment::findOrFail($id);
+        // foreach ($shipment->dimensions as $dimension) {
+        //     $dimension->forceDelete();
+        // }
         $shipment->delete();
         return redirect()->route('shipments')->with('error', 'Shipment Deleted Successfully');
     }

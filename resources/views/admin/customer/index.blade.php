@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','Countries')
+@section('title','Add Customer')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -51,8 +51,8 @@
                                     <td>{{ $customer->customer ==null ?'' :$customer->customer->reference_no }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('country.edit',['id'=>$customer->id]) }}" type="button" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('country.destroy',['id'=>$customer->id]) }}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('customer.edit', $customer) }}" type="button" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('customer.destroy',$customer) }}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

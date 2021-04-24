@@ -111,7 +111,7 @@
           <!-- Notifications Dropdown Menu -->
           <li class="nav-item dropdown">
                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <img src="" alt="
+                    <img src="{{asset('assets/admin/dist/img/avatar.png')}}" alt="
                image" style="width: 30px; height:30px;display: inline-block;border-radius: 50%;">
                     {{ Auth::user()->name }}
 

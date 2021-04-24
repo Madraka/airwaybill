@@ -29,11 +29,12 @@ Edit User
                <div class="col-12">
                     <div class="card card-primary">
                          <div class="card-header">
-                              <h3 class="card-title">Add User</h3>
+                              <h3 class="card-title">Edit User</h3>
                          </div>
                          @include('admin.layouts.formerror')
-                         <form role="form" action="{{ route('user.update',['id'=> $user->id ]) }}" method="post" enctype="multipart/form-data">
+                         <form action="{{ route('user.update',['id'=> $user->id ]) }}" method="post" enctype="multipart/form-data">
                               @csrf
+                              @method('PUT')
 
                               <div class="form-group">
                                    <label for="name">Name*:</label>
@@ -46,7 +47,6 @@ Edit User
                               <div class="form-group">
                                    <label for="role_id">Select User Role:</label>
                                    <select class="form-control" id="role_id" name="role_id" required>
-                                        <option >--Select User Role--</option>
                                         @foreach($roles as $role)
                                         <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : '' }}>{{ $role->role }}</option>
                                         @endforeach
@@ -54,10 +54,10 @@ Edit User
                               </div>
                               <div class="form-group">
                                    <label for="password">Password*:</label>
-                                   <input type="password" name="password" class="form-control" value="{{ $user->pass" required>
+                                   <input type="password" name="password" class="form-control" value="{{ $user->pass}}" required>
                               </div>
                
-                              <button type="submit" class="btn btn-success">Add</button>
+                              <button type="submit" class="btn btn-success">Edit Data</button>
                          </form>
                     </div>
                </div>

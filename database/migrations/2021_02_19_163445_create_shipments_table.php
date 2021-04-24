@@ -16,8 +16,8 @@ class CreateShipmentsTable extends Migration
         Schema::create('shipments', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('account_number');
-            $table->bigInteger('awb_no');
-            $table->string('customer_reference');
+            $table->bigInteger('awb_no')->default(1);
+            $table->string('customer_reference')->default('pradhan');
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->string('shipper_name')->comment('From');

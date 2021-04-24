@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
-    // Shipments
+
+    // Shipments -subash edited add, edit and delete shipments
     Route::get('/shipments', 'Admin\ShipmentsController@index')->name('shipments');
     Route::get('/shipment/create', 'Admin\ShipmentsController@create')->name('shipment.create');
     Route::post('/shipment/store', 'Admin\ShipmentsController@store')->name('shipment.store');
@@ -24,13 +26,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/shipment/update/{id}', 'Admin\ShipmentsController@update')->name('shipment.update');
     Route::get('/shipment/delete/{id}', 'Admin\ShipmentsController@destroy')->name('shipment.destroy');
     Route::get('/shipment/customer/change/ajax/{id}', 'Admin\ShipmentsController@customAjaxChange')->name('shipment.customer.ajax.change');
+    
     // Manifests
     Route::get('/manifests', 'Admin\ManifestsController@index')->name('manifests');
     Route::get('/manifest/create', 'Admin\ManifestsController@create')->name('manifest.create');
     Route::post('/manifest/store', 'Admin\ManifestsController@store')->name('manifest.store');
     Route::get('/manifest/edit/{id}', 'Admin\ManifestsController@edit')->name('manifest.edit');
-    Route::post('/manifest/update/{id}', 'Admin\ManifestsController@update')->name('manifest.update');
-    Route::get('/manifest/delete/{id}', 'Admin\ManifestsController@destroy')->name('.manifest.destroy');
+    
+    // updated -- subash
+    Route::get('/manifest/show/{id}','Admin\ManifestsController@show')->name('manifest.show');
+    Route::match(['put','patch'],'/manifest/update/{id}', 'Admin\ManifestsController@update')->name('manifest.update');
+    Route::get('/manifest/delete/{id}', 'Admin\ManifestsController@destroy')->name('manifest.destroy');
+    
+
     // Services
     Route::get('/services', 'Admin\ServicesController@index')->name('services');
     Route::get('/service/create', 'Admin\ServicesController@create')->name('service.create');
@@ -53,7 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/user/create', 'Admin\UsersController@create')->name('user.create')->middleware('admin');
     Route::post('/user/store', 'Admin\UsersController@store')->name('user.store')->middleware('admin');
     Route::get('/user/edit/{id}', 'Admin\UsersController@edit')->name('user.edit')->middleware('admin');
-    Route::post('/user/update/{id}', 'Admin\UsersController@update')->name('user.update')->middleware('admin');
+    Route::match(['put','patch'],'/user/update/{id}', 'Admin\UsersController@update')->name('user.update')->middleware('admin');
     Route::get('/user/delete/{id}', 'Admin\UsersController@destroy')->name('user.destroy')->middleware('admin');
 
     // Profile
@@ -70,6 +78,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/customers', 'Admin\UsersController@showCustomer')->name('customers');
     Route::get('/customer/create', 'Admin\UsersController@createCustomer')->name('customer.create')->middleware('admin');
     Route::post('/customer/store', 'Admin\UsersController@store')->name('customer.store')->middleware('admin');
+
+    // Customer edit route - subash
+    Route::get('/customer/edit/{id}','Admin\CustomerController@edit')->name('customer.edit')->middleware('admin');
+    Route::match(['put','patch'],'/customer/update/{id}','Admin\CustomerController@update')->name('customer.update')->middleware('admin');
+
+    // destroy -subash
+    Route::get('/customer/delete/{id}','Admin\CustomerController@destroy')->name('customer.destroy')->middleware('admin');
 
     Route::get('/cus_ref/{id}', 'Admin\UsersController@getRefNo');
 

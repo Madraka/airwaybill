@@ -48,13 +48,13 @@ class ManifestsController extends Controller
             'flight_no'=>$request->flight_no
             ]);
         $manifest_id = $manifest->id;
-        foreach($request->shipments as $shipment){            
+        foreach(request()->shipments as $shipment){            
             Shipment::where('id',$shipment)->update([
                 'manifest'=>1,
                 'manifest_id' => $manifest_id
             ]); 
-        }
-        return redirect()->route('manifests')->with('success', "Manifest Added Successfully");
+        }    
+        return redirect('admin/manifests')->with('success', "Manifest Added Successfully");
     }
 
     /**
@@ -63,9 +63,12 @@ class ManifestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($manifest)
     {
-        //
+        $manifest= Manifest::findOrFail($manifest);
+        return view('admin/manifest.show')->with([
+            'manifest'=> $manifest,
+        ]);
     }
 
     /**
@@ -74,10 +77,11 @@ class ManifestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($manifest)
     {
+        $manifest= Manifest::findOrFail($manifest);
         $shipments = Shipment::where('manifest','=',0)->get();
-        return view('admin.manifest.edit',compact('shipments'));
+        return view('admin.manifest.edit',compact('manifest','shipments'));
     }
 
     /**
@@ -87,18 +91,21 @@ class ManifestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $manifest)
     {
         $this->validate($request,[
             'flight_no' => 'required',
         
         ]);
 
-        $manifest = Manifest::findOrFail($id);
+        $manifest = Manifest::findOrFail($manifest);
         $manifest->flight_no = $request->flight_no;
+        
         $manifest->save();
-        $manifest->shipments()->sync($request->shipments);
-        return redirect()->route('manifests')->with('success', "Manifest Updated Successfully");
+
+
+        // $manifest->shipments()->sync($request->shipments);
+        return redirect('admin/manifests')->with('success', "Manifest Updated Successfully");
     }
 
     /**
@@ -111,7 +118,6 @@ class ManifestsController extends Controller
     {
         $manifest = Manifest::findOrFail($id);
         $manifest->delete();
-       
         return redirect()->route('manifests')->with('error', "Manifest Deleted Successfully");
     }
 }

@@ -85,10 +85,10 @@
                                     <td>Declared Value</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <a href="{{route('manifest.edit',$manifest)}}" type="button" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('manifest.destroy',$manifest)}}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                             <button type="button" class="btn btn-success"><i class="fa fa-print"></i></button>
-                                            <button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button>
+                                            <a href="{{route('manifest.show',$manifest)}}" type="button" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                         </div>
                                     </td>
                                 </tr>
