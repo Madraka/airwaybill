@@ -31,38 +31,47 @@
             <!-- /.card-header -->
             <div class="card-body">
                 @include('admin.layouts.formerror')
-                <form role="form" action="{{ route('customer.update', ['id'=>$customer->id]) }}" method="post" enctype="multipart/form-data">
-                     @csrf
-                     @method('PUT')
+                <form role="form" action="{{ route('customer.update', ['id'=>$user->id]) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
 
-                     <div class="form-group">
-                          <label for="name">Customer Name:</label>
-                          <input type="text" id="name" name="name" value="{{$customer->name}}" class="form-control">
-                     </div>
-                     <div class="form-group">
-                          <label for="email">Customer Email:</label>
-                          <input type="email" name="email" value="{{$customer->email}}" class="form-control" required>
-                     </div>
-                     <div class="form-group d-none">
-                          <input type="text" name="role_id" value="3">
-                     </div>
-                     <div class="form-group">
-                          <label for="password">Password:</label>
-                          <input type="password" name="password" value="{{$customer->password}}" class="form-control" required>
-                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
+                        <label for="name">Customer Name:</label>
+                        <input type="text" id="name" name="name" value="{{$user->name}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Customer Email:</label>
+                        <input type="email" name="email" value="{{$user->email}}" class="form-control" required>
+                    </div>
+                    <div class="form-group d-none">
+                        <input type="text" name="role_id" value="3">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" value="" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                         <label for="password">Customer Address:</label>
+                        @foreach($customers as $customer)
                         <input type="text" name="address" value="{{$customer->address}}" class="form-control" required>
-                   </div>
-                   <div class="form-group">
-                    <label for="phone">Customer Phone:</label>
-                    <input type="text" name="phone" value="{{$customer->phone}}" class="form-control" required>
-               </div>
-                   <div class="form-group">
-                    <label for="number">Reference Number:</label>
-                    <input type="number" name="ref" value="{{$customer->reference_no}}" class="form-control" required>
-               </div>
-                     <button type="submit" class="btn btn-success">Update Customer</button>
+                        @endforeach
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Customer Phone:</label>
+                        @foreach($customers as $customer)
+                        <input type="text" name="phone" value="{{$customer->phone}}" class="form-control" required>
+                        @endforeach
+                    </div>
+                    <div class="form-group">
+                        <label for="number">Reference Number:</label>
+                        @foreach($customers as $customer)
+                        <input type="number" name="reference_no" value="{{$customer->reference_no}}" class="form-control" required>
+                        @endforeach
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Update Customer</button>
                 </form>
             </div>
             <!-- /.card-body -->

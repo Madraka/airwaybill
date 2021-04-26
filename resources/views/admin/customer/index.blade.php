@@ -31,7 +31,7 @@
                         <table id="example1" class="table table-hover dataTable no-footer">
                             <thead>
                                 <tr>
-                                    <th>S.No</th>
+                                    <th>#ID</th>
                                     <th>Customer Name</th>
                                     <th>Customer Email</th>
                                     <th>Customer Address</th>
@@ -41,9 +41,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($customers as $customer)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
+                                @foreach($customers as $customer)
+                                    <td>{{$customer->id}}</td>
                                     <td>{{ $customer->name }}</td>
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->customer ==null ?'' :$customer->customer->address }}</td>

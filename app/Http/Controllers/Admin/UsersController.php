@@ -68,10 +68,10 @@ class UsersController extends Controller
             'avatar' => 'uploads/avatars/male.jpg'
         ]);
         if($request->role_id == 3){
-            Customer::create([
+            $customers= Customer::create([
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'reference_no' => $request->ref,
+                'reference_no' => $request->reference_no,
                 'user_id' => $users->id
             ]);
             return redirect()->route('customers')->with('success', "Customer Added Successfully");
@@ -141,7 +141,7 @@ class UsersController extends Controller
         $user->profile->delete();
         $user->delete();
 
-        return redirect()->route('users')->with('success', "User Deleted Successfully");
+        return redirect()->route('users')->with('error', "User Deleted Successfully");
     }
 
     public function showCustomer(){

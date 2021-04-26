@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','Add Country')
+@section('title','Add Customer')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -50,16 +50,16 @@
                           <input type="password" name="password" class="form-control" required>
                      </div>
                      <div class="form-group">
-                        <label for="password">Customer Address:</label>
+                        <label for="address">Customer Address:</label>
                         <input type="text" name="address" class="form-control" required>
                    </div>
                    <div class="form-group">
                     <label for="phone">Customer Phone:</label>
-                    <input type="text" name="phone" class="form-control" required>
+                    <input type="number" name="phone" class="form-control" required>
                </div>
                    <div class="form-group">
-                    <label for="number">Reference Number:</label>
-                    <input type="number" name="ref" class="form-control" required>
+                    <label for="reference_no">Reference Number:</label>
+                    <input type="number" name="reference_no" class="form-control" required>
                </div>
                      <button type="submit" class="btn btn-success">Add Customer</button>
                 </form>
