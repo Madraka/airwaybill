@@ -90,22 +90,39 @@ class CustomerController extends Controller
         // return view('admin.customer.edit', compact('customer'));
     }
 
-    function update($customer)
+    function update($id)
     {
         // $customer = User::findOrFail($customer);
-        $customer = DB::table('users')
-            ->leftJoin('customers', 'users.id', '=', 'customers.user_id')
-            ->where('users.id', $customer);
-        DB::table('customers')->where('user_id',$customer);
+        // $customer = DB::table('users')
+        //     ->leftJoin('customers', 'users.id', '=', 'customers.user_id')
+        //     ->where('users.id', $customer);
+        // DB::table('customers')->where('user_id',$customer);
 
-        $customer->update([
+        // $customer->update([
+        //     'name'=>request()->name,
+        //     'email'=>request()->email,
+        //     'password'=>request()->password,
+        //     'address'=>request()->address,
+        //     'phone'=>request()->phone,
+        //     'reference_no'=>request()->reference_no
+        // ]);
+
+        $customer= User::where('users.id', $id)
+        ->leftJoin('customers', 'users.id','=','customers.user_id')
+        ->select('users.id', 'customers.user_id')
+        ->update([
             'name'=>request()->name,
             'email'=>request()->email,
-            'password'=>request()->password,
+            'password'=>request()->password
+        ]);;
+
+        Customer::where('user_id',$id)->update([
+            
             'address'=>request()->address,
             'phone'=>request()->phone,
             'reference_no'=>request()->reference_no
         ]);
+
         return redirect('admin/customers')
             ->withSuccess('User data has been updated');
     }
@@ -117,11 +134,18 @@ class CustomerController extends Controller
         // $customer = Customer::findOrFail($id);
         // $customer = User::findOrFail($id);
         // return $customer;
-        $customer = DB::table('users')
-            ->leftJoin('customers', 'users.id', '=', 'customers.user_id')
-            ->where('users.id', $id);
-        DB::table('customers')->where('user_id', $id)->delete();
-        $customer->delete();
+        // $customer = DB::table('users')
+        //     ->leftJoin('customers', 'users.id', '=', 'customers.user_id')
+        //     ->where('users.id', $id);
+        // DB::table('customers')->where('user_id', $id)->delete();
+        // $customer->delete();
+
+        $customer= User::where('users.id',$id)
+            ->leftJoin('customers', 'users.id','=','customers.user_id')
+            ->select('users.id','customers.user_id')
+            ->first()
+            ->delete();
+        Customer::where('user_id',$id)->delete();
         return redirect('admin/customers')
             ->with('success', 'User data has been deleted successfully');
     }

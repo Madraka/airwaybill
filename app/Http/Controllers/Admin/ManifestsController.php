@@ -17,8 +17,8 @@ class ManifestsController extends Controller
      */
     public function index()
     {
-        $manifests = Manifest::with('shipments')->orderBy('id','desc')->get();
-        return view('admin.manifest.index',compact('manifests'));
+        $manifests = Manifest::with('shipments')->orderBy('id', 'desc')->get();
+        return view('admin.manifest.index', compact('manifests'));
     }
 
     /**
@@ -28,8 +28,8 @@ class ManifestsController extends Controller
      */
     public function create()
     {
-        $shipments = Shipment::where('manifest','=',0)->get();
-        return view('admin.manifest.create',compact('shipments'));
+        $shipments = Shipment::where('manifest', '=', 0)->get();
+        return view('admin.manifest.create', compact('shipments'));
     }
 
     /**
@@ -41,19 +41,19 @@ class ManifestsController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        $this->validate($request,[
+        $this->validate($request, [
             'flight_no' => 'required',
         ]);
-        $manifest= Manifest::create([
-            'flight_no'=>$request->flight_no
-            ]);
+        $manifest = Manifest::create([
+            'flight_no' => $request->flight_no
+        ]);
         $manifest_id = $manifest->id;
-        foreach(request()->shipments as $shipment){            
-            Shipment::where('id',$shipment)->update([
-                'manifest'=>1,
+        foreach ($request->shipments as $shipment) {
+            Shipment::where('id', $shipment)->update([
+                'manifest' => 1,
                 'manifest_id' => $manifest_id
-            ]); 
-        }    
+            ]);
+        }
         return redirect('admin/manifests')->with('success', "Manifest Added Successfully");
     }
 
@@ -65,9 +65,9 @@ class ManifestsController extends Controller
      */
     public function show($manifest)
     {
-        $manifest= Manifest::findOrFail($manifest);
+        $manifest = Manifest::findOrFail($manifest);
         return view('admin/manifest.show')->with([
-            'manifest'=> $manifest,
+            'manifest' => $manifest,
         ]);
     }
 
@@ -79,9 +79,9 @@ class ManifestsController extends Controller
      */
     public function edit($manifest)
     {
-        $manifest= Manifest::findOrFail($manifest);
-        $shipments = Shipment::where('manifest','=',0)->get();
-        return view('admin.manifest.edit',compact('manifest','shipments'));
+        $manifest = Manifest::findOrFail($manifest);
+        $shipments = Shipment::where('manifest', '=', 0)->get();
+        return view('admin.manifest.edit', compact('manifest', 'shipments'));
     }
 
     /**
@@ -93,14 +93,14 @@ class ManifestsController extends Controller
      */
     public function update(Request $request, $manifest)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'flight_no' => 'required',
-        
+
         ]);
 
         $manifest = Manifest::findOrFail($manifest);
         $manifest->flight_no = $request->flight_no;
-        
+
         $manifest->save();
 
 
