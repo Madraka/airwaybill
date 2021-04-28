@@ -45,7 +45,8 @@
                                 <div class="form-group">
                                     <label>Awb Number</label>
                                     <br>
-                                    @foreach($service->awb as $awb_list)
+                                    @foreach($service->awb as $awb_list) 
+                                    <!-- subash -->
                                         {{--<option value="{{$awb_list->service_id}}">{{$awb_list->awb_number}}</option>--}}
                                         <input type="text" value="{{$awb_list->awb_number}}" name="awb_number[]" class="form-control">
                                         <br>
