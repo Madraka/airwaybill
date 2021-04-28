@@ -35,6 +35,8 @@
                     @csrf
                     @method('PUT')
 
+                    <input type="hidden" name="id" value="{{$user->id}}" class="form-control">
+
                     <div class="form-group">
                         <label for="name">Customer Name:</label>
                         <input type="text" id="name" name="name" value="{{$user->name}}" class="form-control">
@@ -52,23 +54,20 @@
                         <label for="password">Password:</label>
                         <input type="password" name="password" value="" class="form-control" required>
                     </div>
+
                     <div class="form-group">
-                        <label for="password">Customer Address:</label>
-                        @foreach($customers as $customer)
-                        <input type="text" name="address" value="{{$customer->address}}" class="form-control" required>
-                        @endforeach
+                        <label for="">Customer Address:</label>
+                        <input type="text" name="address" value="{{$user->customer->address}}" class="form-control" required>
+
                     </div>
                     <div class="form-group">
-                        <label for="phone">Customer Phone:</label>
-                        @foreach($customers as $customer)
-                        <input type="text" name="phone" value="{{$customer->phone}}" class="form-control" required>
-                        @endforeach
+                        <label for="">Customer Phone:</label>
+                        <input type="text" name="phone" value="{{$user->customer->phone}}" class="form-control" required>
+
                     </div>
                     <div class="form-group">
-                        <label for="number">Reference Number:</label>
-                        @foreach($customers as $customer)
-                        <input type="number" name="reference_no" value="{{$customer->reference_no}}" class="form-control" required>
-                        @endforeach
+                        <label for="">Reference Number:</label>
+                        <input type="number" name="reference_no" value="{{$user->customer->reference_no}}" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-success">Update Customer</button>

@@ -25,7 +25,9 @@ class CustomerController extends Controller
     {
         // dd($id);
         $user = User::findOrFail($id);
-        $customers = Customer::all();
+        // $customers = Customer::where('id', $id);
+        $customers= Customer::all();
+        
         // $user= User::findOrFail($id);
         return view('admin.customer.edit')->with([
             'user' => $user,

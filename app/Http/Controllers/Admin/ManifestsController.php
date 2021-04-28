@@ -41,20 +41,20 @@ class ManifestsController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        $this->validate($request, [
+        $this->validate($request,[
             'flight_no' => 'required',
         ]);
-        $manifest = Manifest::create([
-            'flight_no' => $request->flight_no
-        ]);
-        $manifest_id = $manifest->id;
-        foreach ($request->shipments as $shipment) {
-            Shipment::where('id', $shipment)->update([
-                'manifest' => 1,
-                'manifest_id' => $manifest_id
+        $manifest= Manifest::create([
+            'flight_no'=>$request->flight_no
             ]);
+        $manifest_id = $manifest->id;
+        foreach($request->shipments as $shipment){            
+            Shipment::where('id',$shipment)->update([
+                'manifest'=>1,
+                'manifest_id' => $manifest_id
+            ]); 
         }
-        return redirect('admin/manifests')->with('success', "Manifest Added Successfully");
+        return redirect()->route('manifests')->with('success', "Manifest Added Successfully");
     }
 
     /**
@@ -65,10 +65,10 @@ class ManifestsController extends Controller
      */
     public function show($manifest)
     {
-        $manifest = Manifest::findOrFail($manifest);
-        return view('admin/manifest.show')->with([
-            'manifest' => $manifest,
-        ]);
+        // $manifest = Manifest::findOrFail($manifest);
+        // return view('admin/manifest.show')->with([
+        //     'manifest' => $manifest,
+        // ]);
     }
 
     /**

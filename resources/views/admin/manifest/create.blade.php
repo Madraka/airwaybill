@@ -76,7 +76,7 @@
                                         @foreach($shipments as $shipment)
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="shipments" value="{{$shipment->id}}">
+                                                <input type="checkbox" name="shipments[]" value="{{$shipment->id}}">
                                             </td>
                                             <td>{{$shipment->awb_no}}</td>
                                             <td>{{$shipment->shipper_name}}</td>
