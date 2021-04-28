@@ -126,7 +126,7 @@ class ServicesController extends Controller
         $service->save();
 
 //        azen
-        dd($request->awb_number);
+        // dd($request->awb_number);
         foreach($request->awb_number as $awb){
             Awb::where("service_id",$id)
                 ->update([
@@ -134,7 +134,7 @@ class ServicesController extends Controller
                 ]);
         }
         $services = Service::with('awb')->where('id', $id)->get();
-        dd($services);
+        // dd($services);
         return redirect()->route('services')->with('success', "Service Updated Successfully");
     }
 

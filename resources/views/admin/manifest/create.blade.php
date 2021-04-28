@@ -39,7 +39,7 @@
                                     <label for="flight_no">Flight No:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input name="flight_no" class="form-control" type="text" required>
+                                    <input name="flight_no" class="form-control" type="number" required>
                                 </div>
                             </div>
                         </div>

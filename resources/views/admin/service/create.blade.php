@@ -42,7 +42,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Enter Awb Number</label>
-                                <input class="form-control" type="text" name="awb" id="awb" placeholder="Awb Number">
+                                <input class="form-control" type="number" name="awb" id="awb" placeholder="Awb Number">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Add</button>
