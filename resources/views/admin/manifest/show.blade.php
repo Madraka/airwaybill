@@ -8,6 +8,8 @@
 
 <div class="justify-content-center">
     <h3>Flight No: {{$manifest->flight_no}}</h3><br>
+
+    <!-- viewing the specific shipment record with id -- subash  -->
     
     @foreach($manifest->shipments as $shipment)
         <h3>{{$shipment->shipper_name}}</h3><br>

@@ -35,6 +35,8 @@
                     @csrf
                     @method('PUT')
 
+                    <!-- subash -- customer and user edited successfully  -->
+
                     <input type="hidden" name="id" value="{{$user->id}}" class="form-control">
 
                     <div class="form-group">

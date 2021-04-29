@@ -49,6 +49,7 @@
                           <label for="password">Password*:</label>
                           <input type="password" name="password" class="form-control" required>
                      </div>
+                     <!-- address, phone number and reference number from customer db -- subash  -->
                      <div class="form-group">
                         <label for="address">Customer Address:</label>
                         <input type="text" name="address" class="form-control" required>

@@ -51,6 +51,7 @@
                                     <td>{{ $customer->customer ==null ?'' :$customer->customer->reference_no }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
+                                        <!-- editing and deleting customer with an specific  $customer as id -- subash  -->
                                             <a href="{{ route('customer.edit', $customer) }}" type="button" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                             <a href="{{ route('customer.destroy',$customer) }}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </div>

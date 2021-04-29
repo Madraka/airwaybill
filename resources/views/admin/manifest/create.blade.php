@@ -76,6 +76,7 @@
                                         @foreach($shipments as $shipment)
                                         <tr>
                                             <td>
+                                            <!-- [] in the name contains array value getting from request -- subash -->
                                                 <input type="checkbox" name="shipments[]" value="{{$shipment->id}}">
                                             </td>
                                             <td>{{$shipment->awb_no}}</td>
