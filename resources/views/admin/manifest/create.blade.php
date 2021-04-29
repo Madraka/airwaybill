@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','Add Manifest')
+@section('title','Add Manifests')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
